@@ -1,0 +1,57 @@
+Rules for Generating Human Populations
+
+
+Processing/Data Storage
+
+  Events and processing are based on a day.
+  Data is stored in days.
+
+
+Calendar
+
+  24 hours/day
+  365 days/year
+  monthly cycles
+
+
+Minimum viable population
+
+  160 - size of a small village, could be as small as 80 with social
+    engineering (source: Anthropologist John Moore from University of Florida)
+
+  50/500 rule - short-term effective population of 50 is needed to prevent
+    an unacceptable rate of inbreeding (1% per generation is acceptable);
+    long-term population of 500 required to maintain overall genetic viability
+    (source: Franklin and Soule)
+
+
+Population Increase
+
+  Conception depends on:
+  - availability: fertile males, not being pregnant, how long since last
+    birth or miscarriage (if any)
+  - age: in addition to the fertility range, add percentage chance within
+    the fertility range (with a mid point)
+  - number of previous: pregnancies, miscarriages, children
+  - fat: not enough food lowers the chance significantly
+  - birth control: preventative methods, if available and used
+  - other social factors: TBD
+
+  * Possibly add in fertility strength of male?
+
+
+Groupings
+
+  The household unit is the basic economic unit.  This is an extended family
+  model - husband + wife with children and "extra" family members, and possibly
+  retainers, servants, employees, slaves.
+
+  Household leadership is 1 or 2 people, usually the married couple.
+
+  One married son inherits the household, or a married daughter if no
+  (married) sons.  Parents remain in household until death, with leadership
+  transferring to the son and his wife.  The other married sons and daughters
+  leave to establish their own households.  Single sons and daughters become
+  the "extras" of households or become retainers/employees/servants.
+
+  Household size? possibly 15

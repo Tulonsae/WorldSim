@@ -1,0 +1,246 @@
+Various Notes
+- Family
+- Kinship
+- Marriage
+- Community Groups
+- Households
+- Generations
+- Farming
+
+
+Family (read Marriage below)
+
+  Is a group of people affiliated by (one of):
+  - consanguinity (by recognized birth)
+  - affinity (by marriage)
+  - co-residence/shared consumption (see Nurture kinship)
+
+  In most societies, it is the main institution for the socialization of
+  children.  In societies with a sexual division of labour, marriage (and
+  the resulting relationship between two people) is necessary for the
+  formation of an economically productive household.
+
+  Before postmodern family, marriages were arranged for economic, social,
+  or political gain.  Children were expected to contribute to family income.
+
+  Types:
+  - matrifocal (a mother and her children)
+  - conjugal (a husband, his wife, and their children) aks nuclear family
+  - avuncular (a brother, his sister, and her children)
+  - extended family (parents and children co-reside with other members of
+    one of the parent's family)
+
+  Residence
+  - Matrilocal: when the family resides with or near the wife's parents.
+    Thus, multiple generations of the female offspring live in the "same
+    place".  For visiting marriage, the children live with their mother.
+    This type of residence is found most often in horticultural soceities.
+    In partriarchal societies, the brothers are the authority figures, not
+    the women.
+  - Patrilocal: when the family resides with or near the husband's parents.
+    The wife joins her husband in his father's home or compound.  Families
+    living in a patrilocal residence generally assume joint ownership of
+    domestic sources.  The household is led by a senior member, who also
+    directs the labour of all other members.
+
+  Primotgeniture dictates that the eldest son inherits the family estate
+  and younger sons had to leave home and seek their own employment.  It
+  maintains family estates over generations by permitting only one heir
+  per generation.
+
+  Family size declined (in the U.S.) between 1800 and 1900 from 7.0 to 3.5
+  children.  In 1900, six to nine of every 1000 women died in childbirth,
+  and one in five children died during the first 5 years of life.
+
+
+Kinship
+
+  Rules of descent:
+  - Bilateral - an individual affiliates more or less equally with relatives
+    on both parents.
+  - Unilineal - an individual affiliates with relatives from one parent.
+    - Patrilineal - male; most societies are patrilineal.
+    - Matrilineal - female; many societies that practice this system often
+      haven a patrilocal residence and men exercising significant authority.
+      The descent group includes the mother's brother.
+  - Ambilineal (or Cognatic) - an individual affiliates with relatives from
+    one of their parents (usually choosing which side).
+  - Double Descent - an individual affiliates with each set of relatives,
+    but for different purposes.
+
+  Clan: A clan is generally a descent group claiming common descent from an
+  apical ancestor.  (Parentage detail are often not important.)  Non-human
+  apical ancestors are called totems.
+
+  Lineage: A unilineal descent group that can demonstrate their common
+  descent from a known apical ancestor.
+
+  Phatry: A descent group composed of two or more clans, each of whose
+  apical ancestors are descended from a further common ancestor.
+
+  Moiety: When a society is divided into exactly two descent groups.  If
+  the halves are obliged to marry out (into the other), these are called
+  matrimonial moieties.
+
+  House society: In some societies, kinship and political relations are
+  organized around membership in corporately organized dwellings (rather
+  than descent groups or lineages).  Property, genealogy, and residence
+  are not the basis for the group's existence.
+
+
+Marriage:
+
+  Marriage is a socially or ritually recognized union or legal contract
+  between spouses that establishes rights and obligations between them
+  and their childre, and between them and their in-laws.
+
+  Endogamy - marriage within one's own tribe or similar unit.
+
+  Exogamy - marriage to a person belonging to another tribe, clan, or
+  similar social unit.
+
+  Affinity (aka in-laws) is the kinship relationship which each partner
+  in a marriage has to the relations of the other partner.  Affinity does
+  not always cease with divorce or the death of one of the partners.
+  It can sometimes include kinship by adoption and step relationship.
+
+  Consanguinity is a "blood" kinship relationship.
+
+  There is wide cross-cultural variation in the social rules governing the
+  select of partner for marriage.  In many societies, the choice of of
+  partner is limited to suitable persons from specific social groups (can
+  be Endogamy or Exogamy).  With few exceptions, marriage between parents
+  and children or between full siblings is forbidden.
+
+  Marriages between more distant relatives has been common, with one
+  estimate being that 80% of all marriages in history have been between
+  second cousins or closer.
+
+  Visiting marriage is when the husband and wife live apart (with their
+  separate families), seeing each other in their spare time.
+
+  Polygamy is a form of plural marriage (more than 2 people).
+  - Polgyny: A man is allowed more than one wife.
+  - Polyandry: A woman is allowed more than one husband.  This is rather
+    rare.  More likely in societies with scarce environmental resources.
+    Fraternal polyandry (brothers marrying one woman) allows land to be
+    inherited by all children/heirs of brothers without dividing up the
+    land plot.
+  - Group marriage: Usually consists of 3-6 adults, all partners live
+    together, share finances, children, and household responsibilities.
+    The most common form is a triad (with at least one member of the
+    opposite gender).
+  - Line marriage: A form of marriage (found in fiction) where the family
+    may add new spouses over time so the marriage does not end.
+
+  During early middle ages, average age of marriage was early twenties,
+  for both genders.  As more land became cultivated and during the high
+  and late middle ages, women increasingly married in their teens, leading
+  to higher birth rates.  Women were married once they reached reproductive
+  age, but men needed independent means (to provide for their family)
+  before they married so the average for men remained high (mid to late
+  twenties).
+
+
+Community Groups:
+
+  Sizes:
+  - Small = bands = 30-50
+  - Medium = culturage lineage groups = 100-200
+  - Large = tribes = 500-2500
+
+  Dunbar has argued that 150 would be the mean group size only for
+  communities with a very high incentive to remain together.  In dispersed
+  societies, individuals will meet less often and be less familiar with
+  each other, so group sizes would be smaller.  Thus, the 150-member group
+  would only occur because of absolute necessity (intense environmental and
+  economic pressures).
+
+  In Ireland, the basis for aristocratic medieval social organization was
+  the sept, a clan that could comprise as many as 250 households, or 1250
+  individuals, all somehow related.
+
+
+Households:
+
+  Household work includes housework (e.g., laundry, cleaning) and carework
+  (e.g., child care, elder care).
+
+  U.S. definition: A household includes all the persons who occupy a housing
+  unit. A housing unit is a house, an apartment, a mobile home, a group of
+  rooms, or a single room that is occupied (or if vacant, is intended for
+  occupancy) as separate living quarters. Separate living quarters are those
+  in which the occupants live and eat separately from any other persons in
+  the building and which have direct access from the outside of the building
+  or through a common hall. The occupants may be a single family, one person
+  living alone, two or more families living together, or any other group of
+  related or unrelated persons who share living arrangements. (People not
+  living in households are classified as living in group quarters.)
+
+  Most economic theories assume only one income stream to a household, but
+  many households include multiple income-earning members.
+
+  There is not always a one-to-one relationship between households and
+  families.
+
+  Household Work Strategies:
+  (3 domains of employment)
+  - market economy (includes home-based and self-employment jobs): in order
+    to obtain money to buy goods and services in the market
+  - domestic production work (e.g., raising chickens, vegetable gardening):
+    to supply food to the household
+  - domestic consumption work (e.g., cooking meals, child-care, household
+    repairs): to provide goods and services directly within the household
+
+
+Generations:
+
+  Generation time is the average time between two consecutive generations
+  in the lineages of a population.  Typically 20-30 years in humans.
+
+  One of the ways to determine generation time is the average age of
+  mothers at the birth of their daughters.  A father-son distance could
+  be used.  Or a parent-child distance.
+
+  Another method of generation time is the age at which members of a given
+  birth cohort are expected to reproduce.
+
+
+Farming
+
+  Hunter/gatherer needed about 10 square miles per person.  California's
+  lushest landscape (coast of Santa Barbara) supported 1.5 people per
+  square mile.
+
+  Two acres in a mild temperate region is enough work to wear out a person
+  and enough room to comfortably support a family of four with a variety
+  of food sources (gardens, orchards, small livestock, and wild crafting).
+  Modern small scale agriculture, probably bio-intensive methods.
+
+  From a post, 1.9 acre per person living in a sustainable village
+  (1.9 acre * 140 people = 266 acres)
+  - 0.6250 acre of farmland/person		87.5   farmland
+  - 0.0892 acre of farmland to be sold/person	12.488 farmland
+  - 0.2321 acre of living area/person		32.494 living
+  - 0.0214 acre of wine vineyards/person	 2.996 vineyard
+  - 0.0714 acre of ponds/person			 9.996 pond
+  - 0.0214 acre of coffee/person		 2.996 coffee
+  - 0.0071 acre of teas/person			  .994 tea
+  - 0.0142 acre of herbs/person			 1.988 herbs
+  - 0.1428 acre of schools/person		19.992 schools
+  - 0.2142 acre of park & wildlife/person	29.988 park & wildlife
+  - 0.1428 acre of village square/person	19.992 village square
+  - 0.1785 acre of livstock/person		24.99  livestock
+  - 0.1392 acre of roads & ect/person 		19.488 roads, etc.
+
+  Standard a century ago (and in India today), 8 acres per person.
+
+  Hardwoods average yield, depending on the region, is 1/3 a cord per
+  acre per year.  A cord of wood is 4x4x8 (128 cubic feet).  A cord of
+  air dried, dense hardwood (oak, hickory, etc.) weighs about 2 tons
+  of which 15 to 20 percent is water and which has the heating value of
+  a ton of coal or 200 gallons of fuel oil.
+
+
+Sources:
+  Wikipedia, in particular Kinship
