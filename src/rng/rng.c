@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2013, 2014, 2015 Kathy Feller.
+ * Copyright (c) 2013-2015 Kathy Feller.
+ *
+ * Source code for rng library.
  */
 
 #include <time.h>

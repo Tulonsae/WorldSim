@@ -1,5 +1,10 @@
 #ifndef RNG_H
 #define RNG_H
+/*
+ * Copyright (c) 2013-2015 Kathy Feller.
+ *
+ * Header file for rng library.
+ */
 
 /* odd or even */
 #define ODD	1
