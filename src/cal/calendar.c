@@ -1,46 +1,62 @@
 /*
- * Copyright (c) 2014, Kathy Feller.
+ * Copyright (c) 2014-2015, Kathy Feller.
  */
 
 #include "calendar.h"
 
-/* local variables */
+/* private variables */
 
 // tropical year, starts on northern vernal equinox
 Time tropicalYear = 365.2422;
 
+// min days in a year - this must be shorter or same as tropical year
+Day minYear = 365;
 
-/* declare local functions */
+
+/* declare private functions */
+Day getMinDaysInYear();
 Time getLastEquinox(Time time);
-Year getNumWholeYears(Time time);
 Day getNumWholeDays(Time time);
 Day getNumWholeDaysOfYear(Time time);
+Year getNumWholeYears(Time time);
 
 
-/* local functions */
+/* private functions */
+
+// get minimum number of days in a calendar year
+Day getMinDaysInYear() {
+    return (Day)tropicalYear;
+}
 
 // get latest equinox
-//   this returns the last occuring equinox, which includes the current
-//   time if it exactly equals the equinox time
+//   this returns the last occuring equinox
+//   if the time is exactly an equinox time, then it is returned
 Time getLastEquinox(Time time) {
     Year years = (Year)(time / tropicalYear);
 
     return ((Time)years * tropicalYear);
 }
 
-// get the number of whole years
-Year getNumWholeYears(Time time) {
-    return (Year)(getSpringOfYear(time) / tropicalYear);
-}
-
-// get the number of whole days
+// get the number of whole days since beginning
 Day getNumWholeDays(Time time) {
     return (Day)time;	// equivalent to getStartOfDay(time)
 }
 
-// get the number of whole days in the calendar (partial) year
+// get the number of whole days in this (partial) calendar year
 Day getNumWholeDaysOfYear(Time time) {
     return (Day)(getStartOfDay(time) - getStartOfYear(time));
+}
+
+// get the last day of this calendar year
+Day getLastDayOfYear(Time time) {
+    // get the spring, add a tropical year, subtract 1 day to get
+    // the last day, get the start of that day, then return the Day
+    return getDay(getStartOfDay(getSpringOfYear(time) + tropicalYear - 1));
+}
+
+// get the number of whole calendar years since beginning
+Year getNumWholeYears(Time time) {
+    return (Year)(getSpringOfYear(time) / tropicalYear);
 }
 
 
@@ -51,8 +67,14 @@ Time getTropicalYear() {
     return tropicalYear;
 }
 
-// get time of vernal equinox for year
-//   by definition, the vernal equinox is the first day of the year,
+// get starting time for this day
+Time getStartOfDay(Time time) {
+    Day start = (Day)time;
+    return (Time)start;
+}
+
+// get time of vernal equinox for this calendar year
+//   by definition, the vernal equinox occurs in the first day of the year,
 //   therefore, the part of the day just before the actual equinox event is
 //   part of this year's spring day, not the previous year
 Time getSpringOfYear(Time time) {
@@ -67,31 +89,41 @@ Time getSpringOfYear(Time time) {
     return getLastEquinox(time);
 }
 
-// get starting time for day
-Time getStartOfDay(Time time) {
-    Day start = (Day)time;
-    return (Time)start;
-}
-
-// get start time for year
+// get start time for this calendar year
 Time getStartOfYear(Time time) {
     return getStartOfDay(getSpringOfYear(time));
 }
 
-// get (and initialize) new calendar date
-Date getCalendarDate(Time time) {
+// get calendar year
+Year getYear(Time time) {
+    return getNumWholeYears(time) + 1;
+}
+
+// get calendar day
+Day getDay(Time time) {
+    return getNumWholeDays(time) + 1;
+}
+
+// get calendar day of year
+Day getDayOfYear(Time time) {
+    return getNumWholeDaysOfYear(time) + 1;
+}
+
+// get (and initialize) new date
+Date getDate(Time time) {
     Date date;
 
     if (time < 0) {
-        fprintf(stderr, "Warning: invalid calendar time, setting to 0\n");
+        fprintf(stderr, "Warning: invalid time, setting to 0\n");
         time = 0;
     }
 
     date.time = time;
-    date.y = getCalendarYear(time);
+    date.d = getDay(time);
+    date.y = getYear(time);
     date.moy = 0;	// TBD
     date.dom = 0;	// TBD
-    date.doy = getCalendarDayOfYear(time);
+    date.doy = getDayOfYear(time);
     date.numY = getNumWholeYears(time);
     date.numM = 0;	// TBD
     date.numD = getNumWholeDays(time);
@@ -102,60 +134,37 @@ Date getCalendarDate(Time time) {
     return date;
 }
 
-// get calendar year for specified calendar date
-Year getCalendarYear(Time time) {
-    return getNumWholeYears(time) + 1;
-}
+// get (and initialize) new calendar year, given the time
+CalendarYear getCalendarYear(Time time) {
+    CalendarYear calYear;
 
-// get calendar day of year for specified calendar date
-Day getCalendarDayOfYear(Time time) {
-    return getNumWholeDaysOfYear(time) + 1;
-}
-
-// convert years to days, to beginning of year
-Day convertYearToBeginDay(Year years) {
-    return (Day)(years * tropicalYear);
-}
-
-// convert years to days, to middle of year
-Day convertYearToMidDay(Year years) {
-    return (Day)((years * tropicalYear) + (int)(tropicalYear / 2));
-}
-
-// convert years to days, to end of year
-Day convertYearToEndDay(Year years) {
-    return (Day)(((years + 1) * tropicalYear) - 1);
-}
-
-// convert years to days, to random day in year
-Day convertYearToRandomDay(Year years) {
-    int first = (int)convertYearToBeginDay(years);
-    int last = (int)convertYearToEndDay(years);
-    return (Day)uRand(first, last);
-}
-
-/*
-// convert days to ymd date, in earth calendar
-YmdTime convertDayToYmd(Day days) {
-    YmdTime ymd;
-
-    ymd.y = (Year)(days / tropicalYear);
-    Day remainder = days - (ymd.y * tropicalYear);
-    ymd.m = (Month)(remainder / earthCal.dpM);
-    ymd.d = (Day)(remainder - (ymd.m * earthCal.dpM));
-
-    return ymd;
-}
-*/
-
-// calculate birth Day, given day, age
-Day calcBirthDayByAge(Day onDay, Day atAge) {
-
-    int birthDay = onDay - atAge;
-    if (birthDay < 0) {
-        fprintf(stderr, "Warning: invalid birthDay (negative), setting to Day 0");
-        birthDay = 0;
+    if (time < 0) {
+        fprintf(stderr, "Warning: invalid time, setting time to 0\n");
+        time = 0;
     }
 
-    return birthDay;
+    calYear.year = getYear(time);
+    calYear.spring = getSpringOfYear(time);
+    calYear.first = getDay(getStartOfYear(time));
+    calYear.last = getLastDayOfYear(time);
+    calYear.length = calYear.last - calYear.first + 1;
+
+    return calYear;
+}
+
+// get (and initialize) new calendar year, given the calendar year
+CalendarYear getCalendarYearForYear(Year year) {
+    if (year < 1) {
+        fprintf(stderr, "Warning: invalid year, setting year to 1\n");
+        year = 1;
+    }
+
+    // since each year begins at spring
+    Time time = (year - 1) * tropicalYear;
+    if (getYear(time) != year) {
+        fprintf(stderr, "Warning: internal (logic) error, setting year to 1\n");
+        time = 0.0;
+    }
+
+    return getCalendarYear(time);
 }

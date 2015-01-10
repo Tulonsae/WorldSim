@@ -9,7 +9,10 @@
  * For events before the calendar's 0th day, use a different calendar with
  * a conversion rule.
  *
- * Data is stored in days.  No current ability to work with hours.
+ * Data is stored in days.  This is defined as Time.  The Time for a day
+ * starts with .0 and ends just before the next .0.  For example, the first
+ * day (Day 1) is from 0.0 to 0.9_ (repeating).  The next day (Day 2) would
+ * be from 1.0 to 1.9_ (repeating).
  *
  * TODO - Separate functions by planetary rules (equinoxes, tropical year,
  * moon phases, etc.) and by calendar events (months, holidays, etc.).
@@ -20,24 +23,25 @@
  * defined in data rules.  Same for planetary rules.
  *
  * Also handle holidays.
+ *
+ * TODO - implement months for Date structure.
  */
 
 #include <stdio.h>
-#include <sim.h>
-#include <rng.h>
 
-// types of calendar units
-typedef double Time;		// calendar time, measured in days
+// calendar units
+typedef double Time;		// calendar time, measured in days (.0 to .9_)
 typedef int Day;
 typedef int Week;
 typedef int Month;
 typedef int Year;
 
-// date, using base calendar
-// TODO - months are still TBI
+// date - information about a specific date (Time)
+// d, y, moy, dom, and doy start at 1, the rest start at 0
 typedef struct {
-    Time time;			// date/time, measured in days
-    Year y;			// calendar year
+    Time time;			// date/time
+    Day d;			// day of the calendar
+    Year y;			// year of the calendar
     Month moy;			// month of the year
     Day dom;			// day of the month
     Day doy;			// day of the year
@@ -49,29 +53,28 @@ typedef struct {
     Day numDpm;			// number of whole days in partial month
 } Date;
 
+// calendar year - contains information about a specific calendar year
+typedef struct {
+    Year year;			// calendar year
+    Time start;			// start of year
+    Time spring;		// vernal equinox
+    Day first;			// first day
+    Day last;			// last day
+    Day length;			// number of days in this year
+} CalendarYear;
+
 // get length of tropical year
 Time getTropicalYear();
 
-// get calendar info for specified calendar time
+// get calendar info for specified time
 Time getStartOfDay(Time time);
 Time getStartOfYear(Time time);
 Time getSpringOfYear(Time time);		// vernal equinox for year
-Date getCalendarDate(Time time);
-Year getCalendarYear(Time time);		// equals Date.y
-Day getCalendarDayOfYear(Time time);		// equals Date.doy
-
-// convert earth years to days
-Day convertYearToBeginDay(Year years);		// to beginning of year
-Day convertYearToMidDay(Year years);		// to middle of year
-Day convertYearToEndDay(Year years);		// to end of year
-Day convertYearToRandomDay(Year years);		// to random day in year
-
-/*
-// convert days to ymd time, using earth calendar
-YmdTime convertDayToYmd(Day days);
-*/
-
-// calculate birth Day
-Day calcBirthDayByAge(Day onDay, Day atAge);
+Date getDate(Time time);
+Day getDay(Time time);				// equals Date.d
+Year getYear(Time time);			// equals Date.y
+Day getDayOfYear(Time time);			// equals Date.doy
+CalendarYear getCalendarYear(Time time);
+CalendarYear getCalendarYearForYear (Year year);
 
 #endif /* CALENDAR_H */
