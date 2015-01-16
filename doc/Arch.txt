@@ -1,0 +1,38 @@
+Architecture Notes
+==================
+
+This document is an informally written set of notes on the architecture of
+WorldSim.  Very much a work in progress.
+
+
+Calendar
+--------
+
+    Currently, only 1 calendar is supported.  This calendar is based on
+    earth's (current) tropical calendar, but simplified.  This tropical
+    year, unlike earth's, does not vary.
+
+        1 minute = 60 seconds
+        1 hour = 60 minutes
+        1 day = 24 hours
+        1 tropical year = 365.2422 days
+
+    The calendar year starts on the same day as the northern vernal equinox
+    and lasts through the day preceeding the next northern vernal equinox.
+    This means that most calendar years are 365 days with an extra day
+    every few years.
+
+    The lunar cycle and months have not been determined yet.
+
+
+Libraries
+---------
+
+rng
+    This random number generator library contains various convenience
+    routines to generate pseudo-random numbers.
+
+calendar
+    This library contains the routines that handle the calendar and all
+    calendar math.  See the Calendar Section in this document for more
+    information on the calendar itself.
