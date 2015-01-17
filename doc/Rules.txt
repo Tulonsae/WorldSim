@@ -1,4 +1,5 @@
 Rules for Generating Human Populations
+Note: this document is now out of date and needs revising.
 
 
 Processing/Data Storage

@@ -1,0 +1,14 @@
+Schema Notes
+============
+
+
+Master Database
+---------------
+
+    TBD
+
+
+Regional Database
+-----------------
+
+    TBD

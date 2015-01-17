@@ -5,6 +5,46 @@ This document is an informally written set of notes on the architecture of
 WorldSim.  Very much a work in progress.
 
 
+Execution
+---------
+
+    Although there may be a number of different startup programs (to setup
+    configuration, allow for command line vs. graphical vs. browser, allow
+    for different platforms, etc.), each will launch/start a master
+    controller (mc) process.
+
+    The mc reads in the persistent data it needs from the master database.
+    If the master database does not exist, mc will create one.
+
+    Next, mc initializes the regional processes, giving them information
+    (e.g., the location of their regional database) as needed.
+
+    After that, mc monitors the regional processes and facilitates
+    inter-regional activities.
+
+    Currently, only a command line console startup program is being
+    developed.
+
+
+Data Persistence
+----------------
+
+    Data is stored using SQLite, using multiple database files.  The master
+    controller database stores the various controller information, including
+    information about the other databases.
+
+    Currently, there are only 2 types of databases.
+
+    1. master database - a single database, with a predefined name
+    2. regional database - each region has their own database
+
+    For the current draft of the schema, see Schema.txt.
+
+    Journaling and possibly backup functions for the master database may
+    be added later.  Archiving functionality will probably be needed, at
+    some point, for performance reasons.
+
+
 Calendar
 --------
 
@@ -36,3 +76,6 @@ calendar
     This library contains the routines that handle the calendar and all
     calendar math.  See the Calendar Section in this document for more
     information on the calendar itself.
+
+people
+    In progress.
