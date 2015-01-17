@@ -14,6 +14,7 @@ Day minYear = 365;
 
 
 /* declare private functions */
+
 Day getMinDaysInYear();
 Time getLastEquinox(Time time);
 Day getNumWholeDays(Time time);

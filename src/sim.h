@@ -1,6 +1,10 @@
 #ifndef SIM_H
 #define SIM_H
-// defines basic data types
+/*
+ * Copyright (c) 2015 Kathy Feller.
+ *
+ * Header file that defines basic/fundamental types for WorldSim.
+ */
 
 /* id */
 typedef int Id;
