@@ -5,10 +5,54 @@ Schema Notes
 Master Database
 ---------------
 
-    TBD
+    Table: RegionList
+        region_id	numeric id, unique across all regions (1)
+        name		string name
+        dbfile		filename (2)
+        status		active, inactive (dead/destroyed/archived?)
+        start		timedate the region starts (3)
+        end		timedate the region ends (3)
+
+    (1) The id is used as an additional identifier for objects in the region.
+        For example, each region assigns a person a numeric id.  These ids
+        are not unique across all regions, only within the region.  When a
+        person transfers to another region or when people from multiple
+        regions are processed together, the region id plus the person id
+        is guaranteed to be unique across all regions for any person.
+
+    (2) The dbfile string is created from the name by:
+        - convert all letters to lower case
+        - convert spaces to underscores
+        - add the extension ".db"
+
+    (3) The start and end timedates are used to indicate processing is not
+        needed.  For example, if a region ends (perhaps it was utterly
+        destroyed) on 10000 then that region doesn't need to be included
+        in typical processing after that timedate.
 
 
 Regional Database
 -----------------
 
-    TBD
+    Table: Person
+        person_id	numeric id, unique within this region (1)
+        gender		male, female (2)
+        birth		timedate of birth
+        death		timedate of death
+        mother_id	person id of genetic mother (3)
+        father_id	person id of genetic father (3)
+        num_offspring	number of offspring, if any (4)
+
+    (1) A person_id is created for each person born or first appearing
+        within this region.
+
+    (2) Currently, only allowing for human genders.
+
+    (3) Will need a code to indicate that the mother/father data is
+        located in a different regional database.  (Possibly use a negative
+        number - the negative indicates to look it up, and the number
+        indicates which transaction id in the lookup table.)  Also,
+        need an unknown id code.
+
+    (4) Need a none code and an unknown code.  Possibly a "at least this
+        many" code.  Or should this field just be number of known offspring?

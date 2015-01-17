@@ -5,6 +5,18 @@ This document is an informally written set of notes on the architecture of
 WorldSim.  Very much a work in progress.
 
 
+Design Questions
+----------------
+
+    Each person is assigned a person id within the region they are born or
+    first appear.  Person ids are unique only within their region.  Regions
+    each have a unique id, which is unique across all regions.  For people
+    who travel/migrate to other regions, it would perhaps make sense to
+    assign them a new id in the new region.  This would mean a table to
+    track migrations or people with "multiple" ids.  Probably put that table
+    in the master database.
+
+
 Execution
 ---------
 
@@ -14,13 +26,17 @@ Execution
     controller (mc) process.
 
     The mc reads in the persistent data it needs from the master database.
-    If the master database does not exist, mc will create one.
+    If the master database does not exist, the mc will create one.
 
-    Next, mc initializes the regional processes, giving them information
-    (e.g., the location of their regional database) as needed.
+    Next, the mc initializes the regional processes, giving them any needed
+    information (e.g., the location of their regional database).  The mc
+    should guarantee that each region is not managed (i.e., updated) by more
+    than one process.
 
-    After that, mc monitors the regional processes and facilitates
-    inter-regional activities.
+    After startup, the mc manages the "world tick", monitors the regional
+    processes, and facilitates inter-regional activities.  The mc also
+    handles console requests, creating new regions, and running special
+    processes (e.g., history/storyline summaries).
 
     Currently, only a command line console startup program is being
     developed.
@@ -38,7 +54,8 @@ Data Persistence
     1. master database - a single database, with a predefined name
     2. regional database - each region has their own database
 
-    For the current draft of the schema, see Schema.txt.
+    For the current schema documentation (still being drafted), see
+    Schema.txt.
 
     Journaling and possibly backup functions for the master database may
     be added later.  Archiving functionality will probably be needed, at
@@ -63,6 +80,17 @@ Calendar
     every few years.
 
     The lunar cycle and months have not been determined yet.
+
+
+People
+------
+
+    Some quick notes - to be expanded later.  Currently:
+
+        only human genders (male, female)
+        not handling sexuality (hetero, gay, trans, etc.)
+        only handling two genetic parents (mother, father)
+        not handling adoption, foster, biological vs nurturing parents
 
 
 Libraries
