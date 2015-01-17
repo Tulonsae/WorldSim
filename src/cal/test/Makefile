@@ -1,10 +1,7 @@
-# Makefile for cal
+# Makefile for calendar library unit tests
 .SILENT:
 
 all: test
-
-%.o: %.c ../calendar.h
-	$(CC) -c $< -o $@
 
 clean:
 	rm -f *.o utest
