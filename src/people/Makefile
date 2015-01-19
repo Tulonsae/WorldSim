@@ -1,4 +1,4 @@
-# Makefile for calenar
+# Makefile for people library
 .SILENT:
 
 all: libpeople.a

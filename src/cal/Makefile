@@ -1,4 +1,4 @@
-# Makefile for calenar
+# Makefile for calendar library
 .SILENT:
 
 all: libcal.a
