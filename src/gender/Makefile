@@ -12,7 +12,7 @@ libgender.a: gender.o
 clean:
 	rm -f *.o *.a
 
-runtest:
+runtest: libgender.a
 	make -C test all runtest
 
 ROOT = ..
