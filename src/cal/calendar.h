@@ -10,10 +10,10 @@
 
 // calendar units
 typedef double Time;		// calendar time, measured in days (.0 to .9_)
-typedef int Day;
-typedef int Week;
-typedef int Month;
-typedef int Year;
+typedef int Day;		// calendar day
+typedef int Week;		// calendar week
+typedef int Month;		// calendar month
+typedef int Year;		// calendar year
 
 // date - information about a specific date (Time)
 // d, y, moy, dom, and doy start at 1, the rest start at 0
@@ -24,12 +24,12 @@ typedef struct {
     Month moy;			// month of the year
     Day dom;			// day of the month
     Day doy;			// day of the year
-    Year numY;			// number of whole years
-    Month numM;			// number of whole months
-    Day numD;			// number of whole days
-    Month numMpy;		// number of whole months in partial year
-    Day numDpy;			// number of whole days in partial year
-    Day numDpm;			// number of whole days in partial month
+    int numY;			// number of whole years
+    int numM;			// number of whole months
+    int numD;			// number of whole days
+    int numMpy;			// number of whole months in partial year
+    int numDpy;			// number of whole days in partial year
+    int numDpm;			// number of whole days in partial month
 } Date;
 
 // calendar year - contains information about a specific calendar year
@@ -39,7 +39,7 @@ typedef struct {
     Time spring;		// vernal equinox
     Day first;			// first day
     Day last;			// last day
-    Day length;			// number of days in this year
+    int length;			// number of days in this year
 } CalendarYear;
 
 // get length of tropical year

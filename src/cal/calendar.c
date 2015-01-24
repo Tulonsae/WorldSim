@@ -9,43 +9,40 @@
 // tropical year, starts on northern vernal equinox
 Time tropicalYear = 365.2422;
 
-// min days in a year - this must be shorter or same as tropical year
-Day minYear = 365;
-
 
 /* declare private functions */
 
 Day getMinDaysInYear();
 Time getLastEquinox(Time time);
-Day getNumWholeDays(Time time);
-Day getNumWholeDaysOfYear(Time time);
-Year getNumWholeYears(Time time);
+int getNumWholeDays(Time time);
+int getNumWholeDaysOfYear(Time time);
+int getNumWholeYears(Time time);
 
 
 /* private functions */
 
 // get minimum number of days in a calendar year
-Day getMinDaysInYear() {
-    return (Day)tropicalYear;
+int getMinDaysInYear() {
+    return (int)tropicalYear;
 }
 
 // get latest equinox
 //   this returns the last occuring equinox
 //   if the time is exactly an equinox time, then it is returned
 Time getLastEquinox(Time time) {
-    Year years = (Year)(time / tropicalYear);
+    int years = (int)(time / tropicalYear);
 
     return ((Time)years * tropicalYear);
 }
 
 // get the number of whole days since beginning
-Day getNumWholeDays(Time time) {
-    return (Day)time;	// equivalent to getStartOfDay(time)
+int getNumWholeDays(Time time) {
+    return (int)time;	// equivalent to getStartOfDay(time)
 }
 
 // get the number of whole days in this (partial) calendar year
-Day getNumWholeDaysOfYear(Time time) {
-    return (Day)(getStartOfDay(time) - getStartOfYear(time));
+int getNumWholeDaysOfYear(Time time) {
+    return (int)(getStartOfDay(time) - getStartOfYear(time));
 }
 
 // get the last day of this calendar year
@@ -56,8 +53,8 @@ Day getLastDayOfYear(Time time) {
 }
 
 // get the number of whole calendar years since beginning
-Year getNumWholeYears(Time time) {
-    return (Year)(getSpringOfYear(time) / tropicalYear);
+int getNumWholeYears(Time time) {
+    return (int)(getSpringOfYear(time) / tropicalYear);
 }
 
 
@@ -68,9 +65,9 @@ Time getTropicalYear() {
     return tropicalYear;
 }
 
-// get starting time for this day
+// get starting time for the day that contains this time
 Time getStartOfDay(Time time) {
-    Day start = (Day)time;
+    int start = (int)time;
     return (Time)start;
 }
 
@@ -97,17 +94,17 @@ Time getStartOfYear(Time time) {
 
 // get calendar year
 Year getYear(Time time) {
-    return getNumWholeYears(time) + 1;
+    return (Year)(getNumWholeYears(time) + 1);
 }
 
 // get calendar day
 Day getDay(Time time) {
-    return getNumWholeDays(time) + 1;
+    return (Day)(getNumWholeDays(time) + 1);
 }
 
 // get calendar day of year
 Day getDayOfYear(Time time) {
-    return getNumWholeDaysOfYear(time) + 1;
+    return (Day)(getNumWholeDaysOfYear(time) + 1);
 }
 
 // get (and initialize) new date
@@ -148,7 +145,7 @@ CalendarYear getCalendarYear(Time time) {
     calYear.spring = getSpringOfYear(time);
     calYear.first = getDay(getStartOfYear(time));
     calYear.last = getLastDayOfYear(time);
-    calYear.length = calYear.last - calYear.first + 1;
+    calYear.length = (int)(calYear.last - calYear.first) + 1;
 
     return calYear;
 }

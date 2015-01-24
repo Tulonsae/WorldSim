@@ -12,6 +12,9 @@ libcal.a: calendar.o
 clean:
 	rm -f *.o *.a
 
+runtest: libcal.a
+	make -C test all runtest
+
 ROOT = ..
 include $(ROOT)/Makefile.inc
 
