@@ -17,6 +17,10 @@ enum GenderType {
     GENDER_SIZE,			// number of gender types
 };
 
+// get db codes and display names
+char *getGenderCode(enum GenderType gender);
+char *getGenderName(enum GenderType gender);
+
 // generate random values
 enum GenderType getRandomGender(void);
 

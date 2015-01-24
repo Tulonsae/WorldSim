@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "../gender.h"
 
 
@@ -38,7 +39,7 @@ int main(int argc, char *argv[]) {
         else
             error++;
     }
-    // TEST: are all return values a recognized GenderType?
+    // TEST: are all return values a recognized defined GenderType?
     numTests++;
     desc = "valid genders";
     if (error > 0) {
@@ -62,9 +63,91 @@ int main(int argc, char *argv[]) {
     }
     printf("    female: %i (%f), male: %i (%f)\n", female, (double)female/expected, male, (double)male/expected);
 
-    // TODO - genNewPersonByBirth()
+    name = "getGenderName()";
+    printf("Executing %s\n", name);
+    // TEST: is the correct gender name for GENDER_UNDEFINED returned?
+    numTests++;
+    desc = "gender name for GENDER_UNDEFINED";
+    if (strcmp(getGenderName(GENDER_UNDEFINED), "tbd") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is the correct gender name for GENDER_UNKNOWN returned?
+    numTests++;
+    desc = "gender name for GENDER_UNKNOWN";
+    if (strcmp(getGenderName(GENDER_UNKNOWN), "unknown") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is the correct gender name for GENDER_FEMALE returned?
+    numTests++;
+    desc = "gender name for GENDER_FEMALE";
+    if (strcmp(getGenderName(GENDER_FEMALE), "female") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is the correct gender name for GENDER_MALE returned?
+    numTests++;
+    desc = "gender name for GENDER_MALE";
+    if (strcmp(getGenderName(GENDER_MALE), "male") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 
-    // TODO - genNewPersonByBirthByGender()
+    name = "getGenderCode()";
+    printf("Executing %s\n", name);
+    // TEST: is the correct gender code for GENDER_UNDEFINED returned?
+    numTests++;
+    desc = "gender code for GENDER_UNDEFINED";
+    if (strcmp(getGenderCode(GENDER_UNDEFINED), "-") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is the correct gender code for GENDER_UNKNOWN returned?
+    numTests++;
+    desc = "gender code for GENDER_UNKNOWN";
+    if (strcmp(getGenderCode(GENDER_UNKNOWN), "?") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is the correct gender code for GENDER_FEMALE returned?
+    numTests++;
+    desc = "gender code for GENDER_FEMALE";
+    if (strcmp(getGenderCode(GENDER_FEMALE), "f") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is the correct gender code for GENDER_MALE returned?
+    numTests++;
+    desc = "gender code for GENDER_MALE";
+    if (strcmp(getGenderCode(GENDER_MALE), "m") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 }
 
 /* private functions */

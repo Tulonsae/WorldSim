@@ -4,7 +4,7 @@
 ROOT = .
 include Makefile.inc
 
-MODULES = rng cal people
+MODULES = rng cal gender people
 
 ALLMODS = $(MODULES:%=all-%)
 CLEANMODS = $(MODULES:%=clean-%)
