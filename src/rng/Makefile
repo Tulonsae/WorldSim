@@ -12,6 +12,9 @@ librng.a: rng.o
 clean:
 	rm -f *.o *.a
 
+runtest: librng.a
+	make -C test all runtest
+
 ROOT = ..
 include $(ROOT)/Makefile.inc
 

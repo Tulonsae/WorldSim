@@ -40,13 +40,9 @@ BUILD INFORMATION
         make install
 
     To run unit tests
-        make
-        cd test
-        make
-        ./utest
+        make runtest
 
 TODO
     Complete unit tests.
-    Update make in this directory to execute unit tests.
     Add examples of use.
     Add frequency distribution reports.

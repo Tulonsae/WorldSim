@@ -1,13 +1,13 @@
 # Makefile for rng
 .SILENT:
 
-all: test
-
-%.o: %.c ../rng.h
-	$(CC) -c $< -o $@
+all: clean utest
 
 clean:
 	rm -f *.o utest
 
-test: ../rng.h ../librng.a
+utest: ../rng.h ../librng.a
 	cc -o utest utest.c ../librng.a
+
+runtest: utest
+	./utest
