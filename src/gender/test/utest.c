@@ -148,6 +148,18 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
+
+    /* test result totals */
+    printf("Results:\n");
+    printf("  total tests: %i\n", numTests);
+    printf("  tests passed: %i\n", numPass);
+    printf("  tests failed: %i\n", numFail);
+    if ((numFail + numPass) != numTests)
+        printf("  !! Internal issue - test count is wrong\n");
+    if (numFail > 0)
+        printf("  UNIT TESTS FAILED\n");
+    else
+        printf("  UNIT TESTS PASSED\n");
 }
 
 /* private functions */
