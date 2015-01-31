@@ -9,13 +9,13 @@
 #include <stdio.h>
 
 // calendar units
-typedef double Time;		// calendar time, measured in days (.0 to .9_)
-typedef int Day;		// calendar day
-typedef int Week;		// calendar week
-typedef int Month;		// calendar month
-typedef int Year;		// calendar year
+typedef double Time;		// time since epoch, in days (.0 to <1.0)
+typedef int Day;		// calendar day, 1+
+typedef int Week;		// calendar week, 1+
+typedef int Month;		// calendar month, 1+
+typedef int Year;		// calendar year, 1+
 
-// date - information about a specific date (Time)
+// date - information about a specific calendar date (Time)
 // d, y, moy, dom, and doy start at 1, the rest start at 0
 typedef struct {
     Time time;			// date/time
@@ -30,7 +30,7 @@ typedef struct {
     int numMpy;			// number of whole months in partial year
     int numDpy;			// number of whole days in partial year
     int numDpm;			// number of whole days in partial month
-} Date;
+} CalendarDate;
 
 // calendar year - contains information about a specific calendar year
 typedef struct {
@@ -49,10 +49,10 @@ Time getTropicalYear();
 Time getStartOfDay(Time time);
 Time getStartOfYear(Time time);
 Time getSpringOfYear(Time time);		// vernal equinox for year
-Date getDate(Time time);
-Day getDay(Time time);				// equals Date.d
-Year getYear(Time time);			// equals Date.y
-Day getDayOfYear(Time time);			// equals Date.doy
+CalendarDate getDate(Time time);
+Day getDay(Time time);				// equals CalendarDate.d
+Year getYear(Time time);			// equals CalendarDate.y
+Day getDayOfYear(Time time);			// equals CalendarDate.doy
 CalendarYear getCalendarYear(Time time);
 CalendarYear getCalendarYearForYear (Year year);
 

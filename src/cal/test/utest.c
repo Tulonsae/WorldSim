@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     char *desc = "";
     Time tropicalYear = 365.2422;
     Time time = 0.0;
-    Date date = getDate(time);
+    CalendarDate date = getDate(time);
     CalendarYear cYear = getCalendarYear(time);
 
     name = "getTropicalYear()";

@@ -108,8 +108,8 @@ Day getDayOfYear(Time time) {
 }
 
 // get (and initialize) new date
-Date getDate(Time time) {
-    Date date;
+CalendarDate getDate(Time time) {
+    CalendarDate date;
 
     if (time < 0) {
         fprintf(stderr, "Warning: invalid time, setting to 0\n");
