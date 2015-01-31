@@ -8,17 +8,20 @@
 
 #include <stdio.h>
 
-// calendar units
-typedef double Time;		// time since epoch, in days (.0 to <1.0)
-typedef int Day;		// calendar day, 1+
-typedef int Week;		// calendar week, 1+
-typedef int Month;		// calendar month, 1+
-typedef int Year;		// calendar year, 1+
+// time - measures passage of time, in days
+// epoch is 0.0, each day starts at .0, ends just before the next .0
+typedef double Time;
 
-// date - information about a specific calendar date (Time)
+// calendar units - start at 1
+typedef int Day;
+typedef int Week;
+typedef int Month;
+typedef int Year;
+
+// date - information about a specific calendar date
 // d, y, moy, dom, and doy start at 1, the rest start at 0
 typedef struct {
-    Time time;			// date/time
+    Time time;			// time since epoch
     Day d;			// day of the calendar
     Year y;			// year of the calendar
     Month moy;			// month of the year
