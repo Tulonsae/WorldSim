@@ -13,8 +13,6 @@ typedef int Id;
 typedef float Rate;
 
 /* constants */
-#define INVALID -1
-#define UNDEFINED -2
-#define UNKNOWN -3
+#define UNKNOWN -1
 
 #endif /* SIM_H */
