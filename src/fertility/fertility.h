@@ -1,16 +1,19 @@
 #ifndef FERTILITY_H
 #define FERTILITY_H
 /*
- * This is for humans.
+ * Copyright (c) 2015 Kathy Feller.
+ *
+ * Header file for fertility data.  Currently, for humans only.
  */
 
-#include <sim.h>
 #include <calendar.h>
 
 // fertility type
 enum FertilityType {
-    FERTILE,			// fertile
-    INFERTILE,			// infertile
+    FERTILITY_UNDEFINED,	// not assigned
+    FERTILITY_UNKNOWN,		// not known
+    FERTILITY_YES,		// fertile
+    FERTILITY_NO,		// infertile
     FERTILITY_SIZE,		// number of fertility types
 };
 
@@ -30,5 +33,9 @@ typedef struct {
 typedef struct {
     Day gestation;		// days from conception to birth
 } PregnancyFactors;
+
+// get db codes and display names
+char *getFertilityCode(enum FertilityType type);
+char *getFertilityName(enum FertilityType type);
 
 #endif /* FERTILITY_H */
