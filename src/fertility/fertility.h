@@ -19,31 +19,32 @@ enum FertilityType {
 
 // fertility range
 typedef struct {
-    Year first;			// starting age, in years
-    Year last;			// ending age, in years
-    Year firstVar;		// variance for starting age, in years
-    Year lastVar;		// variance for ending age, in years
-    Day firstMin;		// min starting age, in days (calculated)
-    Day firstMax;		// max starting age, in days (calculated)
-    Day lastMin;		// min ending age, in days (calculated)
-    Day lastMax;		// max ending age, in days (calculated)
-} FertilityRange;
+    Day startMin;		// minimum starting age, in days
+    Day startMax;		// maximum starting age, in days
+    Day startMedium;		// medium starting age, in days
+    Day endMin;			// minimum ending age, in days
+    Day endMax;			// maximum ending age, in days
+    Day endMedium;		// medium ending age, in days
+} FertileRangeFactors;
 
 // pregnancy factors
 // - add miscarriage and such here?
 typedef struct {
-    Day gestation;		// days from conception to birth
+    int gestation;		// from conception to birth, in days
 } PregnancyFactors;
 
 // fertility params - used as general parameters when generating/processing
 typedef struct {
-    FertilityRange fRange;	// female fertility range
-    FertilityRange mRange;	// male fertility range
-    PregnancyFactors preg;	// pregnancy factors
+    FertileRangeFactors fRange;		// female fertility range
+    FertileRangeFactors mRange;		// male fertility range
+    PregnancyFactors preg;		// pregnancy factors
 } FertilityParams;
 
 // get db codes and display names
 char *getFertilityCode(enum FertilityType type);
 char *getFertilityName(enum FertilityType type);
+
+// get fertility params
+FertilityParams getDefaultFertilityParams(void);
 
 #endif /* FERTILITY_H */

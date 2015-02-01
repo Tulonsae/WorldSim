@@ -6,8 +6,8 @@ all: clean utest
 clean:
 	rm -f *.o utest
 
-utest: ../fertility.h ../libfert.a
-	cc $(CFLAGS) -o utest utest.c $(LIB)/librng.a ../libfert.a
+utest: ../fertility.h ../libfert.a utest.c
+	cc $(CFLAGS) -o utest utest.c $(LIB)/librng.a $(LIB)/libcal.a ../libfert.a
 
 runtest: utest
 	./utest

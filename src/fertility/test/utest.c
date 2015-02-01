@@ -109,6 +109,36 @@ int main(int argc, char *argv[]) {
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
 
+    name = "getDefaultFertilityParams()";
+    printf("Executing %s\n", name);
+    // TEST: are default fertility parameters correct?
+    numTests++;
+    desc = "default fertility parameters";
+    FertilityParams params = getDefaultFertilityParams();
+    if ((params.preg.gestation == 266)
+            && (params.fRange.startMin == 2922)
+            && (params.fRange.startMax == 6209)
+            && (params.fRange.startMedium == 4566)
+            && (params.fRange.endMin == 16436)
+            && (params.fRange.endMax == 20453)
+            && (params.fRange.endMedium == 18445)
+            && (params.mRange.startMin == 3653)
+            && (params.mRange.startMax == 6939)
+            && (params.mRange.startMedium == 5297)
+            && (params.mRange.endMin == 20089)
+            && (params.mRange.endMax == 27758)
+            && (params.mRange.endMedium == 23559)
+            ) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+        printf("    female fertility range: %i/%i/%i, %i/%i/%i\n", params.fRange.startMin, params.fRange.startMedium, params.fRange.startMax, params.fRange.endMin, params.fRange.endMedium, params.fRange.endMax);
+        printf("    male fertility range: %i/%i/%i, %i/%i/%i\n", params.mRange.startMin, params.mRange.startMedium, params.mRange.startMax, params.mRange.endMin, params.mRange.endMedium, params.mRange.endMax);
+        printf("    gestation: %i\n", params.preg.gestation);
+    }
+
     /* test result totals */
     printf("Results:\n");
     printf("  total tests: %i\n", numTests);

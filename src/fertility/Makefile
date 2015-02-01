@@ -11,6 +11,7 @@ libfert.a: fertility.o
 
 clean:
 	rm -f *.o *.a
+	make -C test clean
 
 runtest: libfert.a
 	make -C test all runtest
