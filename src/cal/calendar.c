@@ -45,6 +45,11 @@ int getNumWholeDaysOfYear(Time time) {
     return (int)(getStartOfDay(time) - getStartOfYear(time));
 }
 
+// get the first day of this calendar year
+Day getFirstDayOfYear(Time time) {
+    return getDay(getStartOfYear(time));
+}
+
 // get the last day of this calendar year
 Day getLastDayOfYear(Time time) {
     // get the spring, add a tropical year, subtract 1 day to get
@@ -143,7 +148,7 @@ CalendarYear getCalendarYear(Time time) {
 
     calYear.year = getYear(time);
     calYear.spring = getSpringOfYear(time);
-    calYear.first = getDay(getStartOfYear(time));
+    calYear.first = getFirstDayOfYear(time);
     calYear.last = getLastDayOfYear(time);
     calYear.length = (int)(calYear.last - calYear.first) + 1;
 
@@ -165,4 +170,22 @@ CalendarYear getCalendarYearForYear(Year year) {
     }
 
     return getCalendarYear(time);
+}
+
+// convert age in years to days at beginning, middle, end, or random day of year
+// note: this is approximate since it assumes age from epoch
+Day convertAgeInYearsToDays(enum Sequence when, Year years) {
+    Time time = years * tropicalYear;
+
+    if (when == BEGIN)
+        return getFirstDayOfYear(time);
+    else if (when == END)
+        return getLastDayOfYear(time);
+    else if (when == MIDDLE)
+        return getDay(time + (tropicalYear / 2));
+    else if (when == RANDOM)
+        return getDay(uRand(getFirstDayOfYear(time), getLastDayOfYear(time)));
+
+    fprintf(stderr, "Warning: invalid sequence, returning day as 1\n");
+    return 1;
 }

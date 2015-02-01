@@ -7,6 +7,8 @@
  */
 
 #include <stdio.h>
+#include <sim.h>
+#include <rng.h>
 
 // time - measures passage of time, in days
 // epoch is 0.0, each day starts at .0, ends just before the next .0
@@ -58,5 +60,8 @@ Year getYear(Time time);			// equals CalendarDate.y
 Day getDayOfYear(Time time);			// equals CalendarDate.doy
 CalendarYear getCalendarYear(Time time);
 CalendarYear getCalendarYearForYear (Year year);
+
+// convert age in years to days for beginning, middle, end, or random day of year
+Day convertAgeInYearsToDays(enum Sequence when, Year years);
 
 #endif /* CALENDAR_H */

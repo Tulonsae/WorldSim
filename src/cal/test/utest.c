@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) {
     Time time = 0.0;
     CalendarDate date = getDate(time);
     CalendarYear cYear = getCalendarYear(time);
+    Day day = 0;
+    int age = 0;
 
     name = "getTropicalYear()";
     printf("Executing %s\n", name);
@@ -575,6 +577,61 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
         printf("    spring = %.6f, year = %i, first = %i, last = %i, length = %i\n", cYear.spring, cYear.year, cYear.first, cYear.last, cYear.length);
+    }
+
+    name = "convertAgeInYearsToDays()";
+    printf("Executing %s\n", name);
+    // for age 13
+    age = 13;
+    // TEST: is beginning of year at age 13 calculated correctly?
+    numTests++;
+    desc = "beginning of year for age";
+    day = convertAgeInYearsToDays(BEGIN, age);
+    if (day == 4749) {
+        numPass++;
+        printf("  %s: %s: %s %i okay\n", name, PASS, desc, age);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
+        printf("    age = %i, day = %i\n", age, day);
+    }
+    // TEST: is end of year at age 13 calculated correctly?
+    numTests++;
+    desc = "end of year for age";
+    day = convertAgeInYearsToDays(END, age);
+    if (day == 5113) {
+        numPass++;
+        printf("  %s: %s: %s %i okay\n", name, PASS, desc, age);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
+        printf("    age = %i, day = %i\n", age, day);
+    }
+    // TEST: is middle of year at age 13 calculated correctly?
+    numTests++;
+    desc = "middle of year for age";
+    day = convertAgeInYearsToDays(MIDDLE, age);
+    if (day == 4931) {
+        numPass++;
+        printf("  %s: %s: %s %i okay\n", name, PASS, desc, age);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
+        printf("    age = %i, day = %i\n", age, day);
+    }
+    // TEST: is random day of year at age 13 within first and last days?
+    numTests++;
+    desc = "random day of year for age";
+    day = convertAgeInYearsToDays(RANDOM, age);
+    if ((day >= convertAgeInYearsToDays(BEGIN, age)) 
+            && (day <= convertAgeInYearsToDays(END, age))
+            ) {
+        numPass++;
+        printf("  %s: %s: %s %i (day=%i) okay\n", name, PASS, desc, age, day);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
+        printf("    age = %i, day = %i\n", age, day);
     }
 
     /* test result totals */

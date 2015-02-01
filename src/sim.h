@@ -6,13 +6,21 @@
  * Header file that defines basic/fundamental types for WorldSim.
  */
 
+/* constants */
+#define UNKNOWN -1
+
 /* id */
 typedef int Id;
 
 /* rate */
 typedef float Rate;
 
-/* constants */
-#define UNKNOWN -1
+/* sequence */
+enum Sequence {
+    BEGIN,
+    MIDDLE,
+    END,
+    RANDOM
+};
 
 #endif /* SIM_H */

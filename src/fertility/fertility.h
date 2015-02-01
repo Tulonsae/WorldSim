@@ -30,9 +30,17 @@ typedef struct {
 } FertilityRange;
 
 // pregnancy factors
+// - add miscarriage and such here?
 typedef struct {
     Day gestation;		// days from conception to birth
 } PregnancyFactors;
+
+// fertility params - used as general parameters when generating/processing
+typedef struct {
+    FertilityRange fRange;	// female fertility range
+    FertilityRange mRange;	// male fertility range
+    PregnancyFactors preg;	// pregnancy factors
+} FertilityParams;
 
 // get db codes and display names
 char *getFertilityCode(enum FertilityType type);
