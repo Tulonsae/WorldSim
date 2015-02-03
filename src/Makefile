@@ -10,6 +10,7 @@ ALLMODS = $(MODULES:%=all-%)
 CLEANMODS = $(MODULES:%=clean-%)
 INSTMODS = $(MODULES:%=install-%)
 DEINSTMODS = $(MODULES:%=deinstall-%)
+TESTMODS = $(MODULES:%=runtest-%)
 
 start: install
 
@@ -24,6 +25,10 @@ $(CLEANMODS):
 install: sim $(INSTMODS)
 $(INSTMODS):
 	make -C $(@:install-%=%) install
+
+test: $(TESTMODS)
+$(TESTMODS):
+	make -C $(@:runtest-%=%) runtest
 
 deinstall: $(DEINSTMODS)
 $(DEINSTMODS):
