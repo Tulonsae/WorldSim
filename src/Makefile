@@ -4,12 +4,14 @@
 ROOT = .
 include Makefile.inc
 
-MODULES = rng cal gender people
+MODULES = rng cal gender fertility
 
 ALLMODS = $(MODULES:%=all-%)
 CLEANMODS = $(MODULES:%=clean-%)
 INSTMODS = $(MODULES:%=install-%)
 DEINSTMODS = $(MODULES:%=deinstall-%)
+
+start: install
 
 all: sim $(ALLMODS)
 $(ALLMODS):
