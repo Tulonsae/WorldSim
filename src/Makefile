@@ -16,23 +16,23 @@ start: install
 
 all: sim $(ALLMODS)
 $(ALLMODS):
-	make -C $(@:all-%=%) all
+	$(MAKE) -C $(@:all-%=%) all
 
 clean: $(CLEANMODS)
 $(CLEANMODS):
-	make -C $(@:clean-%=%) clean
+	$(MAKE) -C $(@:clean-%=%) clean
 
 install: sim $(INSTMODS)
 $(INSTMODS):
-	make -C $(@:install-%=%) install
+	$(MAKE) -C $(@:install-%=%) install
 
 test: $(TESTMODS)
 $(TESTMODS):
-	make -C $(@:runtest-%=%) runtest
+	$(MAKE) -C $(@:runtest-%=%) runtest
 
 deinstall: $(DEINSTMODS)
 $(DEINSTMODS):
-	make -C $(@:deinstall-%=%) deinstall
+	$(MAKE) -C $(@:deinstall-%=%) deinstall
 
 dirs: $(LIB) $(INC)
 $(INC):

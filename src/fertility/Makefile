@@ -11,10 +11,10 @@ libfert.a: fertility.o
 
 clean:
 	rm -f *.o *.a
-	make -C test clean
+	$(MAKE) -C test clean
 
 runtest: libfert.a
-	make -C test all runtest
+	$(MAKE) -C test all runtest
 
 ROOT = ..
 include $(ROOT)/Makefile.inc
@@ -25,7 +25,7 @@ $(INC)/fertility.h: $(INC) fertility.h
 $(LIB)/libfert.a: $(LIB) libfert.a
 	cp libfert.a $(LIB)
 $(INC) $(LIB):
-	make -C $(ROOT) dirs
+	$(MAKE) -C $(ROOT) dirs
 
 deinstall:
 	rm -f $(INC)/fertility.h

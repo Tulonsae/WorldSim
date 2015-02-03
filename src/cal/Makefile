@@ -13,7 +13,7 @@ clean:
 	rm -f *.o *.a
 
 runtest: libcal.a
-	make -C test all runtest
+	$(MAKE) -C test all runtest
 
 ROOT = ..
 include $(ROOT)/Makefile.inc
@@ -24,7 +24,7 @@ $(INC)/calendar.h: $(INC) calendar.h
 $(LIB)/libcal.a: $(LIB) libcal.a
 	cp libcal.a $(LIB)
 $(INC) $(LIB):
-	make -C $(ROOT) dirs
+	$(MAKE) -C $(ROOT) dirs
 
 deinstall:
 	rm -f $(INC)/calendar.h

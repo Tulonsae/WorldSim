@@ -13,7 +13,7 @@ clean:
 	rm -f *.o *.a
 
 runtest: libgender.a
-	make -C test all runtest
+	$(MAKE) -C test all runtest
 
 ROOT = ..
 include $(ROOT)/Makefile.inc
@@ -24,7 +24,7 @@ $(INC)/gender.h: $(INC) gender.h
 $(LIB)/libgender.a: $(LIB) libgender.a
 	cp libgender.a $(LIB)
 $(INC) $(LIB):
-	make -C $(ROOT) dirs
+	$(MAKE) -C $(ROOT) dirs
 
 deinstall:
 	rm -f $(INC)/gender.h

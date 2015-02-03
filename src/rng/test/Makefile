@@ -7,7 +7,7 @@ clean:
 	rm -f *.o utest
 
 utest: ../rng.h ../librng.a
-	cc -o utest utest.c ../librng.a
+	$(CC) $(CFLAGS) -o utest utest.c ../librng.a
 
 runtest: utest
 	./utest
