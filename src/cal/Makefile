@@ -11,6 +11,7 @@ libcal.a: calendar.o
 
 clean:
 	rm -f *.o *.a
+	$(MAKE) -C test clean
 
 runtest: libcal.a
 	$(MAKE) -C test all runtest

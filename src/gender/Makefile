@@ -11,6 +11,7 @@ libgender.a: gender.o
 
 clean:
 	rm -f *.o *.a
+	$(MAKE) -C test clean
 
 runtest: libgender.a
 	$(MAKE) -C test all runtest
