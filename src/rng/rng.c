@@ -4,9 +4,6 @@
  * Source code for rng library.
  */
 
-#include <time.h>
-#include <stdlib.h>
-
 #include "rng.h"
 
 // seed and seeded flag

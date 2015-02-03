@@ -6,6 +6,10 @@
  * Header file for rng library.
  */
 
+#define _XOPEN_SOURCE 500
+#include <time.h>
+#include <stdlib.h>
+
 /* odd or even */
 #define ODD	1
 #define EVEN	0
