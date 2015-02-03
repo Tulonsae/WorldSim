@@ -11,3 +11,6 @@ utest: ../rng.h ../librng.a utest.c
 
 runtest: utest
 	./utest
+
+ROOT = ../..
+include $(ROOT)/Makefile.inc
