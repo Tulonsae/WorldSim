@@ -21,7 +21,7 @@ $(INC)/person.h: $(INC) person.h
 $(LIB)/libpeople.a: $(LIB) libpeople.a
 	cp libpeople.a $(LIB)
 $(INC) $(LIB):
-	make -C $(ROOT) dirs
+	$(MAKE) -C $(ROOT) dirs
 
 deinstall:
 	rm -f $(INC)/person.h

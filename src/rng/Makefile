@@ -13,7 +13,7 @@ clean:
 	rm -f *.o *.a
 
 runtest: librng.a
-	make -C test all runtest
+	$(MAKE) -C test all runtest
 
 ROOT = ..
 include $(ROOT)/Makefile.inc
@@ -24,7 +24,7 @@ $(INC)/rng.h: $(INC) rng.h
 $(LIB)/librng.a: $(LIB) librng.a
 	cp librng.a $(LIB)
 $(INC) $(LIB):
-	make -C $(ROOT) dirs
+	$(MAKE) -C $(ROOT) dirs
 
 deinstall:
 	rm -f $(INC)/rng.h
