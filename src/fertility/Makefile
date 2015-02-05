@@ -1,5 +1,4 @@
 # Makefile for fertility library
-.SILENT:
 
 all: libfert.a
 

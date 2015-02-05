@@ -1,5 +1,4 @@
 # Makefile
-.SILENT:
 
 ROOT = .
 include Makefile.inc

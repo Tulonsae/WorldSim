@@ -1,5 +1,4 @@
 # Makefile for calendar library
-.SILENT:
 
 all: libcal.a
 

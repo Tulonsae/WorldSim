@@ -1,4 +1,5 @@
 # Makefile includes
+.SILENT:
 
 BUILD = $(ROOT)/..
 INC = $(BUILD)/include

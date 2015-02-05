@@ -1,5 +1,4 @@
 # Makefile for calendar library unit tests
-.SILENT:
 
 all: clean utest
 

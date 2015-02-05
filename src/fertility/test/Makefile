@@ -1,5 +1,4 @@
 # Makefile for fertility library unit tests
-.SILENT:
 
 all: clean utest
 

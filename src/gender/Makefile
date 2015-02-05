@@ -1,5 +1,4 @@
 # Makefile for gender library
-.SILENT:
 
 all: libgender.a
 

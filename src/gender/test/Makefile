@@ -1,5 +1,4 @@
 # Makefile for gender library unit tests
-.SILENT:
 
 all: clean utest
 

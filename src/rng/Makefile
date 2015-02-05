@@ -1,5 +1,4 @@
 # Makefile for rng library
-.SILENT:
 
 all: librng.a
 

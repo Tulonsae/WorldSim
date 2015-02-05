@@ -1,5 +1,4 @@
 # Makefile for rng library unit tests
-.SILENT:
 
 all: clean utest
 
