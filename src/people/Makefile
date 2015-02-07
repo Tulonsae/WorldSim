@@ -10,6 +10,10 @@ libpeople.a: person.o
 
 clean:
 	rm -f *.o *.a
+	$(MAKE) -C test clean
+
+runtest: libpeople.a
+	$(MAKE) -C test all runtest
 
 ROOT = ..
 include $(ROOT)/Makefile.inc
