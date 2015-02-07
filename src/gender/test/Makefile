@@ -6,7 +6,7 @@ clean:
 	rm -f *.o utest
 
 utest: ../gender.h ../libgender.a utest.c
-	$(CC) $(CFLAGS) -o utest utest.c $(LIB)/librng.a ../libgender.a
+	$(CC) $(CFLAGS) -o utest utest.c ../libgender.a $(LIB)/librng.a
 
 runtest: utest
 	./utest
