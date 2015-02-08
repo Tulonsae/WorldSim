@@ -50,6 +50,13 @@ Person createNewPerson(void) {
     return createPersonObject();
 }
 
+// create a person with default (unknown) data with id
+Person createNewPersonWithId(Id id) {
+    Person person = createPersonObject();
+    person.id = id;
+    return person;
+}
+
 // assign person id
 Person assignIdToPerson(Person person, Id id) {
     Person copy = copyPersonObject(person);

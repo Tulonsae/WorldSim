@@ -23,6 +23,8 @@ typedef struct {
 
 // create a person, with default (unknown) data
 Person createNewPerson(void);
+// create a person, with default (unknown) data and specified id
+Person createNewPersonWithId(Id id);
 
 // assign person id
 Person assignIdToPerson(Person person, Id id);

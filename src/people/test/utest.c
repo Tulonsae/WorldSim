@@ -45,6 +45,27 @@ int main(int argc, char *argv[]) {
         printf("    person data: id=%i, gender=%s, birth=%i, death=%i, firstFertileDay=%i, lastFertileDay=%i\n", person.id, getGenderName(person.gender), person.birth, person.death, person.firstFertileDay, person.lastFertileDay);
     }
 
+    name = "createNewPersonWithId()";
+    printf("Executing %s\n", name);
+    // TEST: is person data for default unknown person and id correct?
+    numTests++;
+    desc = "default unknown person data with id";
+    person = createNewPersonWithId(3);
+    if ((person.id == 3)
+            && (person.gender == GENDER_UNKNOWN)
+            && (person.birth == UNKNOWN)
+            && (person.death == UNKNOWN)
+            && (person.firstFertileDay == UNKNOWN)
+            && (person.lastFertileDay == UNKNOWN)
+            ) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+        printf("    person data: id=%i, gender=%s, birth=%i, death=%i, firstFertileDay=%i, lastFertileDay=%i\n", person.id, getGenderName(person.gender), person.birth, person.death, person.firstFertileDay, person.lastFertileDay);
+    }
+
     name = "assignIdToPerson()";
     printf("Executing %s\n", name);
     // TEST: does person get specified id assigned?
