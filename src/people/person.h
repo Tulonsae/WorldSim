@@ -26,8 +26,9 @@ Person createNewPerson(void);
 // create a person, with default (unknown) data and specified id
 Person createNewPersonWithId(Id id);
 
-// assign person id
+// assign data values to person
 Person assignIdToPerson(Person person, Id id);
+Person assignGenderToPerson(Person person, enum GenderType gender);
 
 //Person genNewPerson(Id id, Time current);
 

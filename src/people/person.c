@@ -63,3 +63,10 @@ Person assignIdToPerson(Person person, Id id) {
     copy.id = id;
     return copy;
 }
+
+// assign gender type
+Person assignGenderToPerson(Person person, enum GenderType gender) {
+    Person copy = copyPersonObject(person);
+    copy.gender = gender;
+    return copy;
+}

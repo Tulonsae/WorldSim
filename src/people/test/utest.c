@@ -81,6 +81,44 @@ int main(int argc, char *argv[]) {
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
 
+    name = "assignGenderToPerson()";
+    printf("Executing %s\n", name);
+    // create person
+    person = createNewPerson();
+    // TEST: does person get assigned gender type of unknown?
+    numTests++;
+    desc = "assign unknown gender to a person";
+    person = assignGenderToPerson(person, GENDER_UNKNOWN);
+    if (person.gender == GENDER_UNKNOWN) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: does person get assigned gender type of female?
+    numTests++;
+    desc = "assign female gender to a person";
+    person = assignGenderToPerson(person, GENDER_FEMALE);
+    if (person.gender == GENDER_FEMALE) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: does person get assigned gender type of male?
+    numTests++;
+    desc = "assign male gender to a person";
+    person = assignGenderToPerson(person, GENDER_MALE);
+    if (person.gender == GENDER_MALE) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+
     /* test result totals */
     printf("Results:\n");
     printf("  total tests: %i\n", numTests);
