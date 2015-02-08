@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     desc = "default unknown person data";
     person = createNewPerson();
     if ((person.id == UNKNOWN)
-            && (person.gender == GENDER_UNKNOWN)
+            && (person.gender == GENDER_UNDEFINED)
             && (person.birth == UNKNOWN)
             && (person.death == UNKNOWN)
             && (person.firstFertileDay == UNKNOWN)
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
     desc = "default unknown person data with id";
     person = createNewPersonWithId(3);
     if ((person.id == 3)
-            && (person.gender == GENDER_UNKNOWN)
+            && (person.gender == GENDER_UNDEFINED)
             && (person.birth == UNKNOWN)
             && (person.death == UNKNOWN)
             && (person.firstFertileDay == UNKNOWN)

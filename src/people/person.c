@@ -21,7 +21,7 @@ Person createPersonObject(void) {
     Person person;
 
     person.id = UNKNOWN;
-    person.gender = GENDER_UNKNOWN;
+    person.gender = GENDER_UNDEFINED;
     person.birth = UNKNOWN;
     person.death = UNKNOWN;
     person.firstFertileDay = UNKNOWN;
