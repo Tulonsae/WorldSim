@@ -21,8 +21,12 @@ typedef struct {
     Day lastFertileDay;			// last day of fertility
 } Person;
 
-// generate a new person
-Person genUnknownPerson(void);
+// create a person, with default (unknown) data
+Person createNewPerson(void);
+
+// assign person id
+Person assignIdToPerson(Person person, Id id);
+
 //Person genNewPerson(Id id, Time current);
 
 #endif /* PERSON_H */

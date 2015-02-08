@@ -24,12 +24,12 @@ int main(int argc, char *argv[]) {
     int count = 0;
     Person person;
 
-    name = "genUnknownPerson()";
+    name = "createNewPerson()";
     printf("Executing %s\n", name);
     // TEST: is person data for default unknown person correct?
     numTests++;
     desc = "default unknown person data";
-    person = genUnknownPerson();
+    person = createNewPerson();
     if ((person.id == UNKNOWN)
             && (person.gender == GENDER_UNKNOWN)
             && (person.birth == UNKNOWN)
@@ -43,6 +43,21 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
         printf("    person data: id=%i, gender=%s, birth=%i, death=%i, firstFertileDay=%i, lastFertileDay=%i\n", person.id, getGenderName(person.gender), person.birth, person.death, person.firstFertileDay, person.lastFertileDay);
+    }
+
+    name = "assignIdToPerson()";
+    printf("Executing %s\n", name);
+    // TEST: does person get specified id assigned?
+    numTests++;
+    desc = "assign an id to a person";
+    person = createNewPerson();
+    person = assignIdToPerson(person, 7);
+    if (person.id == 7) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
 
     /* test result totals */

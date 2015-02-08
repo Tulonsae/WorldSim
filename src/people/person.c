@@ -9,17 +9,20 @@
 
 /* declare private functions */
 
-Person createNewPerson(Id id, enum GenderType gender, Day birthDay);
+// create a new person object
+Person createPersonObject(void);
+// copy an existing person object
+Person copyPersonObject(Person orig);
 
 
 /* private functions */
 
-Person createNewPerson(Id id, enum GenderType gender, Day birthDay) {
+Person createPersonObject(void) {
     Person person;
 
-    person.id = id;
-    person.gender = gender;
-    person.birth = birthDay;
+    person.id = UNKNOWN;
+    person.gender = GENDER_UNKNOWN;
+    person.birth = UNKNOWN;
     person.death = UNKNOWN;
     person.firstFertileDay = UNKNOWN;
     person.lastFertileDay = UNKNOWN;
@@ -27,17 +30,29 @@ Person createNewPerson(Id id, enum GenderType gender, Day birthDay) {
     return person;
 }
 
+Person copyPersonObject(Person orig) {
+    Person person;
+
+    person.id = orig.id;
+    person.gender = orig.gender;
+    person.birth = orig.birth;
+    person.death = orig.death;
+    person.firstFertileDay = orig.firstFertileDay;
+    person.lastFertileDay = orig.lastFertileDay;
+
+    return person;
+}
 
 /* public functions */
 
-// generate a new person with unknown values
-Person genUnknownPerson(void) {
-    return createNewPerson(UNKNOWN, GENDER_UNKNOWN, UNKNOWN);
+// create a person with default (unknown) data
+Person createNewPerson(void) {
+    return createPersonObject();
 }
 
-/*
-// generate a new person
-Person genNewPerson(Id id, Time current) {
-    return createNewPerson(UNKNOWN, GENDER_UNKNOWN, UNKNOWN);
+// assign person id
+Person assignIdToPerson(Person person, Id id) {
+    Person copy = copyPersonObject(person);
+    copy.id = id;
+    return copy;
 }
-*/
