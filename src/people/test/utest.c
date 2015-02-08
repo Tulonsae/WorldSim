@@ -119,6 +119,38 @@ int main(int argc, char *argv[]) {
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
 
+    name = "assignBirthDayToPerson()";
+    printf("Executing %s\n", name);
+    // create person
+    person = createNewPerson();
+    // TEST: does person get specified day of birth assigned?
+    numTests++;
+    desc = "assign birth day to a person";
+    person = assignBirthDayToPerson(person, 10);
+    if (person.birth == 10) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+
+    name = "assignDeathDayToPerson()";
+    printf("Executing %s\n", name);
+    // create person
+    person = createNewPerson();
+    // TEST: does person get specified day of death assigned?
+    numTests++;
+    desc = "assign death day to a person";
+    person = assignDeathDayToPerson(person, 10);
+    if (person.death == 10) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+
     /* test result totals */
     printf("Results:\n");
     printf("  total tests: %i\n", numTests);

@@ -70,3 +70,17 @@ Person assignGenderToPerson(Person person, enum GenderType gender) {
     copy.gender = gender;
     return copy;
 }
+
+// assign day of birth
+Person assignBirthDayToPerson(Person person, Day birth) {
+    Person copy = copyPersonObject(person);
+    copy.birth = birth;
+    return copy;
+}
+
+// assign day of death
+Person assignDeathDayToPerson(Person person, Day death) {
+    Person copy = copyPersonObject(person);
+    copy.death = death;
+    return copy;
+}

@@ -29,6 +29,8 @@ Person createNewPersonWithId(Id id);
 // assign data values to person
 Person assignIdToPerson(Person person, Id id);
 Person assignGenderToPerson(Person person, enum GenderType gender);
+Person assignBirthDayToPerson(Person person, Day birth);
+Person assignDeathDayToPerson(Person person, Day death);
 
 //Person genNewPerson(Id id, Time current);
 
