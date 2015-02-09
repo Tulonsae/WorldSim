@@ -22,6 +22,6 @@ char *getGenderCode(enum GenderType gender);
 char *getGenderName(enum GenderType gender);
 
 // generate random values
-enum GenderType getRandomGender(void);
+enum GenderType genGenderRandomly(void);
 
 #endif /* GENDER_H */

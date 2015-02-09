@@ -21,7 +21,7 @@ char *genderCode[GENDER_SIZE] = { "-", "?", "f", "m" };
 /* public functions */
 
 // get a random gender
-enum GenderType getRandomGender(void) {
+enum GenderType genGenderRandomly(void) {
     if (coinflip() == ODD)
         return GENDER_FEMALE;
     else
