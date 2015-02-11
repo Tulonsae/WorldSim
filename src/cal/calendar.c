@@ -72,6 +72,9 @@ Time getTropicalYear() {
 
 // get starting time for the day that contains this time
 Time getStartOfDay(Time time) {
+    if (time < 0)
+        return UNDEFINED;
+
     int start = (int)time;
     return (Time)start;
 }
@@ -81,6 +84,9 @@ Time getStartOfDay(Time time) {
 //   therefore, the part of the day just before the actual equinox event is
 //   part of this year's spring day, not the previous year
 Time getSpringOfYear(Time time) {
+    if (time < 0)
+        return UNDEFINED;
+
     Time start = getStartOfDay(time);
     Time equinox = getLastEquinox(time + 1);
 
@@ -94,21 +100,33 @@ Time getSpringOfYear(Time time) {
 
 // get start time for this calendar year
 Time getStartOfYear(Time time) {
+    if (time < 0)
+        return UNDEFINED;
+
     return getStartOfDay(getSpringOfYear(time));
 }
 
 // get calendar year
 Year getYear(Time time) {
+    if (time < 0)
+        return UNDEFINED;
+
     return (Year)(getNumWholeYears(time) + 1);
 }
 
 // get calendar day
 Day getDay(Time time) {
+    if (time < 0)
+        return UNDEFINED;
+
     return (Day)(getNumWholeDays(time) + 1);
 }
 
 // get calendar day of year
 Day getDayOfYear(Time time) {
+    if (time < 0)
+        return UNDEFINED;
+
     return (Day)(getNumWholeDaysOfYear(time) + 1);
 }
 
@@ -117,8 +135,8 @@ CalendarDate getDate(Time time) {
     CalendarDate date;
 
     if (time < 0) {
-        fprintf(stderr, "Warning: invalid time, setting to 0\n");
-        time = 0;
+        date.time = UNDEFINED;
+        return date;
     }
 
     date.time = time;
@@ -142,8 +160,8 @@ CalendarYear getCalendarYear(Time time) {
     CalendarYear calYear;
 
     if (time < 0) {
-        fprintf(stderr, "Warning: invalid time, setting time to 0\n");
-        time = 0;
+        calYear.year = UNDEFINED;
+        return calYear;
     }
 
     calYear.year = getYear(time);
@@ -158,16 +176,13 @@ CalendarYear getCalendarYear(Time time) {
 // get (and initialize) new calendar year, given the calendar year
 CalendarYear getCalendarYearForYear(Year year) {
     if (year < 1) {
-        fprintf(stderr, "Warning: invalid year, setting year to 1\n");
-        year = 1;
+        CalendarYear calYear;
+        calYear.year = UNDEFINED;
+        return calYear;
     }
 
     // since each year begins at spring
     Time time = (year - 1) * tropicalYear;
-    if (getYear(time) != year) {
-        fprintf(stderr, "Warning: internal (logic) error, setting year to 1\n");
-        time = 0.0;
-    }
 
     return getCalendarYear(time);
 }
@@ -185,7 +200,6 @@ Day convertAgeInYearsToDays(enum Sequence when, Year years) {
         return getDay(time + (tropicalYear / 2));
     else if (when == RANDOM)
         return getDay(uRand(getFirstDayOfYear(time), getLastDayOfYear(time)));
-
-    fprintf(stderr, "Warning: invalid sequence, returning day as 1\n");
-    return 1;
+    else
+        return UNDEFINED;
 }

@@ -6,7 +6,6 @@
  * Header file for calendar library.
  */
 
-#include <stdio.h>
 #include <sim.h>
 #include <rng.h>
 
@@ -51,6 +50,7 @@ typedef struct {
 Time getTropicalYear();
 
 // get calendar info for specified time
+// note: if time < 0, then UNDEFINED is returned
 Time getStartOfDay(Time time);
 Time getStartOfYear(Time time);
 Time getSpringOfYear(Time time);		// vernal equinox for year

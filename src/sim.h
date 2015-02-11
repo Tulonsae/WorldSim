@@ -7,13 +7,11 @@
  */
 
 /* constants */
-#define UNKNOWN -1
+#define UNKNOWN 0
+#define UNDEFINED -1
 
 /* id */
 typedef int Id;
-
-/* rate */
-typedef float Rate;
 
 /* sequence */
 enum Sequence {

@@ -26,6 +26,10 @@ int main(int argc, char *argv[]) {
     CalendarYear cYear = getCalendarYear(time);
     Day day = 0;
     int age = 0;
+    Time invalidTime = -1.5;
+    Year invalidYearZero = 0;
+    Year invalidYearNegative = -1;
+    enum Sequence invalidSequence = RANDOM + 1;
 
     name = "getTropicalYear()";
     printf("Executing %s\n", name);
@@ -59,6 +63,16 @@ int main(int argc, char *argv[]) {
     numTests++;
     desc = "returned as same day";
     if ((int)duringDay == (int)duringDayResult) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    if (getStartOfDay(invalidTime) == UNDEFINED) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
@@ -99,6 +113,16 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    if (getSpringOfYear(invalidTime) == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 
     name = "getStartOfYear()";
     printf("Executing %s\n", name);
@@ -127,6 +151,16 @@ int main(int argc, char *argv[]) {
     numTests++;
     desc = "time after a leap year";
     if (getStartOfYear(6 * tropicalYear + 10) == getTimeAsWholeNumber(6 * tropicalYear)) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    if (getStartOfYear(invalidTime) == UNDEFINED) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
@@ -186,6 +220,16 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    if (getYear(invalidTime) == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 
     name = "getDay()";
     printf("Executing %s\n", name);
@@ -233,6 +277,16 @@ int main(int argc, char *argv[]) {
     numTests++;
     desc = "first day of year after third leap year";
     if (getDay(4748.0) == 4749) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    if (getDay(invalidTime) == UNDEFINED) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
@@ -302,20 +356,19 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
-
-    name = "getDate()";
-    printf("Executing %s\n", name);
-    // TEST: is negative date reset to 0?
+    // TEST: does this routine return UNDEFINED for an invalid time?
     numTests++;
-    desc = "invalid date reset to 0";
-    date = getDate(-1.0);
-    if (date.time == 0.0) {
+    desc = "returned UNDEFINED for invalid time";
+    if (getDayOfYear(invalidTime) == UNDEFINED) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
+
+    name = "getDate()";
+    printf("Executing %s\n", name);
     // TEST: is day of first full tropical year calculated correctly?
     numTests++;
     desc = "day of first full tropical year";
@@ -369,20 +422,20 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
-
-    name = "getCalendarYear()";
-    printf("Executing %s\n", name);
-    // TEST: is negative date reset to 0?
+    // TEST: does this routine return UNDEFINED for an invalid time?
     numTests++;
-    desc = "invalid date reset to 0";
-    cYear = getCalendarYear(-1.0);
-    if (cYear.spring == 0.0) {
+    desc = "returned UNDEFINED for invalid time";
+    date = getDate(invalidTime);
+    if (date.time == UNDEFINED) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
+
+    name = "getCalendarYear()";
+    printf("Executing %s\n", name);
     // TEST: is first calendar year calculated correctly?
     numTests++;
     desc = "first calendar year";
@@ -485,31 +538,20 @@ int main(int argc, char *argv[]) {
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
         printf("    spring = %.6f, year = %i, first = %i, last = %i, length = %i\n", cYear.spring, cYear.year, cYear.first, cYear.last, cYear.length);
     }
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    cYear = getCalendarYear(invalidTime);
+    if (cYear.year == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 
     name = "getCalendarYearForYear()";
     printf("Executing %s\n", name);
-    // TEST: is negative year reset to 1?
-    numTests++;
-    desc = "negative year reset to 1";
-    cYear = getCalendarYearForYear(-1);
-    if (cYear.year == 1) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: is zero year reset to 1?
-    numTests++;
-    desc = "zero year reset to 1";
-    cYear = getCalendarYearForYear(0);
-    if (cYear.year == 1) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
     // TEST: is first calendar year calculated correctly?
     numTests++;
     desc = "first calendar year";
@@ -578,6 +620,28 @@ int main(int argc, char *argv[]) {
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
         printf("    spring = %.6f, year = %i, first = %i, last = %i, length = %i\n", cYear.spring, cYear.year, cYear.first, cYear.last, cYear.length);
     }
+    // TEST: does this routine return UNDEFINED for a (zero) invalid year?
+    numTests++;
+    desc = "returned UNDEFINED for invalid year 0";
+    cYear = getCalendarYearForYear(invalidYearZero);
+    if (cYear.year == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: does this routine return UNDEFINED for a (negative) invalid year?
+    numTests++;
+    desc = "returned UNDEFINED for invalid year negative";
+    cYear = getCalendarYearForYear(invalidYearNegative);
+    if (cYear.year == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 
     name = "convertAgeInYearsToDays()";
     printf("Executing %s\n", name);
@@ -632,6 +696,17 @@ int main(int argc, char *argv[]) {
         numFail++;
         printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
         printf("    age = %i, day = %i\n", age, day);
+    }
+    // TEST: does this routine return UNDEFINED for an invalid sequence?
+    numTests++;
+    desc = "returned UNDEFINED for invalid sequence";
+    day = convertAgeInYearsToDays(invalidSequence, age);
+    if (day == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
 
     /* test result totals */
