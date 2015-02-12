@@ -65,6 +65,16 @@ int main(int argc, char *argv[]) {
 
     name = "getGenderName()";
     printf("Executing %s\n", name);
+    // TEST: does this routine return empty string for an invalid GenderType?
+    numTests++;
+    desc = "invalid gender type";
+    if (strcmp(getGenderName(GENDER_SIZE), "") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
     // TEST: is the correct gender name for GENDER_UNDEFINED returned?
     numTests++;
     desc = "gender name for GENDER_UNDEFINED";
@@ -108,6 +118,16 @@ int main(int argc, char *argv[]) {
 
     name = "getGenderCode()";
     printf("Executing %s\n", name);
+    // TEST: does this routine return empty string for an invalid GenderType?
+    numTests++;
+    desc = "invalid gender type";
+    if (strcmp(getGenderCode(GENDER_SIZE), "") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
     // TEST: is the correct gender code for GENDER_UNDEFINED returned?
     numTests++;
     desc = "gender code for GENDER_UNDEFINED";

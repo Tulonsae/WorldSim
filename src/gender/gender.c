@@ -30,10 +30,26 @@ enum GenderType genGenderRandomly(void) {
 
 // get the db code for a gender type
 char *getGenderCode(enum GenderType gender) {
-    return genderCode[gender];
+    if ((gender == GENDER_UNDEFINED)
+            || (gender == GENDER_UNKNOWN)
+            || (gender == GENDER_FEMALE)
+            || (gender == GENDER_MALE)
+            ) {
+        return genderCode[gender];
+    } else {
+        return "";
+    }
 }
 
 // get the name for a gender type
 char *getGenderName(enum GenderType gender) {
-    return genderName[gender];
+    if ((gender == GENDER_UNDEFINED)
+            || (gender == GENDER_UNKNOWN)
+            || (gender == GENDER_FEMALE)
+            || (gender == GENDER_MALE)
+            ) {
+        return genderName[gender];
+    } else {
+        return "";
+    }
 }
