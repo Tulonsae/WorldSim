@@ -25,6 +25,16 @@ int main(int argc, char *argv[]) {
 
     name = "getFertilityName()";
     printf("Executing %s\n", name);
+    // TEST: does this routine return empty string for an invalid FertiliyType?
+    numTests++;
+    desc = "invalid fertility type";
+    if (strcmp(getFertilityName(FERTILITY_SIZE), "") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
     // TEST: is the correct fertility name for FERTILITY_UNDEFINED returned?
     numTests++;
     desc = "fertility name for FERTILITY_UNDEFINED";
@@ -68,6 +78,16 @@ int main(int argc, char *argv[]) {
 
     name = "getFertilityCode()";
     printf("Executing %s\n", name);
+    // TEST: does this routine return empty string for an invalid FertiliyType?
+    numTests++;
+    desc = "invalid fertility type";
+    if (strcmp(getFertilityCode(FERTILITY_SIZE), "") == 0) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
     // TEST: is the correct fertility code for FERTILITY_UNDEFINED returned?
     numTests++;
     desc = "fertility code for FERTILITY_UNDEFINED";

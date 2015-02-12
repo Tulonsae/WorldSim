@@ -68,12 +68,28 @@ void loadRangeFactors(RangeFactors *factors);
 
 // get the db code for a fertility type
 char *getFertilityCode(enum FertilityType type) {
-    return fertilityCode[type];
+    if ((type == FERTILITY_UNDEFINED)
+            || (type == FERTILITY_UNKNOWN)
+            || (type == FERTILITY_YES)
+            || (type == FERTILITY_NO)
+            ) {
+        return fertilityCode[type];
+    } else {
+        return "";
+    }
 }
 
 // get the name for a fertility type
 char *getFertilityName(enum FertilityType type) {
-    return fertilityName[type];
+    if ((type == FERTILITY_UNDEFINED)
+            || (type == FERTILITY_UNKNOWN)
+            || (type == FERTILITY_YES)
+            || (type == FERTILITY_NO)
+            ) {
+        return fertilityName[type];
+    } else {
+        return "";
+    }
 }
 
 // get default fertility parameters
