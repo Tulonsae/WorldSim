@@ -1,4 +1,4 @@
-rng library for Worldsim.
+rng library for WorldSim.
 
 DESCRIPTION
     This library contains routines to generate pseudo-random numbers, with
@@ -10,7 +10,7 @@ DESCRIPTION
     License: MIT
     Copyright: 2013-2015, Kathy Feller.
 
-DEFINITIONS
+SPECIAL NOTES
     A distribution describes the fequency and type of generation for the
     numbers.  For example, a uniform distribution gives an even chance of
     generating any given number in the range specified.  A bell curve
@@ -33,13 +33,13 @@ BUILD INFORMATION
     Uses standard make and command line c compiler.  (Tested on OSx.)
     Depends on the overall make structure setup for the WorldSim program.
 
-    To compile and create the library,
+    To compile and create the library:
         make
 
-    To install for use in WorldSim program,
+    To install for use in WorldSim program:
         make install
 
-    To run unit tests
+    To run unit tests:
         make runtest
 
 TODO

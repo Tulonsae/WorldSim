@@ -1,0 +1,55 @@
+Documentation for gender library.
+Copyright (c) 2015 Kathy Feller.
+
+NAME
+    getGenderCode, getGenderName, genGenderRandomly - retrieve gender info
+
+LIBRARY
+    libgender.a
+
+SYNOPSIS
+    #include <gender.h>
+
+    char *
+    getGenderCode(enum GenderType gender);
+
+    char *
+    getGenderName(enum GenderType gender);
+
+    enum GenderType
+    genGenderRandomly(void);
+
+    enum GenderType
+        GENDER_UNDEFINED        gender type has not been assigned
+        GENDER_UNKNOWN          gender type is assigned, but unknown
+        GENDER_FEMALE           gender is female
+        GENDER_MALE             gender is male
+        GENDER_SIZE             number of gender types
+
+DESCRIPTION
+    GenderType specifies an enum value for each of the available gender types
+    and a special enum value that indicates the number of gender types.  The
+    GENDER_SIZE is not recognized as a valid gender type by the functions.
+    Its only purpose is to easily determine the number of valid gender types.
+
+    The getGenderCode() function returns the code for the gender type.  This
+    is a single letter and is intended for use by the persistent data store.
+    An empty string is returned if an invalid gender type is passed into the
+    function.
+ 
+    The getGenderName() function returns a string for the gender type.  This
+    is a single word and is intended for human readable reports and displays.
+    An empty string is returned if an invalid gender type is passed into the
+    function.
+
+    The genGenderRandomly() function returns a randomly generated gender type
+    of one of the following: GENDER_FEMALE, GENDER_MALE.
+    
+SEE ALSO
+    Readme.txt
+
+TODO
+    See TODO in Readme.txt.
+
+AUTHORS
+    Kathy Feller
