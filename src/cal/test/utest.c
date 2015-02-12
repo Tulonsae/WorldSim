@@ -379,7 +379,8 @@ int main(int argc, char *argv[]) {
             && (date.doy == 1)
             && (date.numY == 1)
             && (date.numD == 365)
-            && (date.numDpy == 0)) {
+            && (date.numDpy == 0)
+            ) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
@@ -397,7 +398,8 @@ int main(int argc, char *argv[]) {
             && (date.doy == 366)
             && (date.numY == 4)
             && (date.numD == 1825)
-            && (date.numDpy == 365)) {
+            && (date.numDpy == 365)
+            ) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
@@ -415,7 +417,8 @@ int main(int argc, char *argv[]) {
             && (date.doy == 1)
             && (date.numY == 5)
             && (date.numD == 1826)
-            && (date.numDpy == 0)) {
+            && (date.numDpy == 0)
+            ) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
