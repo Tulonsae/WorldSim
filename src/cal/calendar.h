@@ -9,6 +9,9 @@
 #include <sim.h>
 #include <rng.h>
 
+// constants
+#define FIRST_VALID_YEAR 1
+
 // time - measures passage of time, in days
 // epoch is 0.0, each day starts at .0, ends just before the next .0
 typedef double Time;

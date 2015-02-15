@@ -175,7 +175,7 @@ CalendarYear getCalendarYear(Time time) {
 
 // get (and initialize) new calendar year, given the calendar year
 CalendarYear getCalendarYearForYear(Year year) {
-    if (year < 1) {
+    if (year < FIRST_VALID_YEAR) {
         CalendarYear calYear;
         calYear.year = UNDEFINED;
         return calYear;
