@@ -6,6 +6,7 @@
  * Header file for person data and routines.
  */
 
+#include <stdbool.h>
 #include <sim.h>
 #include <calendar.h>
 #include <gender.h>
@@ -21,16 +22,16 @@ typedef struct {
     Day lastFertileDay;			// last day of fertility
 } Person;
 
-// create a person, with default (unknown) data
+// create a new person, with undefined data
 Person createNewPerson(void);
-// create a person, with default (unknown) data and specified id
+// create a new person, with undefined data and specified id
 Person createNewPersonWithId(Id id);
 
 // assign data values to person
-Person assignIdToPerson(Person person, Id id);
-Person assignGenderToPerson(Person person, enum GenderType gender);
-Person assignBirthDayToPerson(Person person, Day birth);
-Person assignDeathDayToPerson(Person person, Day death);
+bool assignIdToPerson(Id id, Person *person);
+bool assignGenderToPerson(enum GenderType gender, Person *person);
+bool assignBirthDayToPerson(Day birth, Person *person);
+bool assignDeathDayToPerson(Day death, Person *person);
 
 //Person genNewPerson(Id id, Time current);
 

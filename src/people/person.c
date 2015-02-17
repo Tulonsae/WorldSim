@@ -9,78 +9,81 @@
 
 /* declare private functions */
 
-// create a new person object
-Person createPersonObject(void);
-// copy an existing person object
-Person copyPersonObject(Person orig);
+// initialize a new person
+Person initPerson(void);
 
 
 /* private functions */
 
-Person createPersonObject(void) {
+Person initPerson(void) {
     Person person;
 
-    person.id = UNKNOWN;
+    person.id = UNDEFINED;
     person.gender = GENDER_UNDEFINED;
-    person.birth = UNKNOWN;
-    person.death = UNKNOWN;
-    person.firstFertileDay = UNKNOWN;
-    person.lastFertileDay = UNKNOWN;
+    person.birth = UNDEFINED;
+    person.death = UNDEFINED;
+    person.firstFertileDay = UNDEFINED;
+    person.lastFertileDay = UNDEFINED;
 
     return person;
 }
 
-Person copyPersonObject(Person orig) {
-    Person person;
-
-    person.id = orig.id;
-    person.gender = orig.gender;
-    person.birth = orig.birth;
-    person.death = orig.death;
-    person.firstFertileDay = orig.firstFertileDay;
-    person.lastFertileDay = orig.lastFertileDay;
-
-    return person;
-}
 
 /* public functions */
 
-// create a person with default (unknown) data
+// create a new person, with undefined data
 Person createNewPerson(void) {
-    return createPersonObject();
+    return initPerson();
 }
 
-// create a person with default (unknown) data with id
+// create a new person, with undefined data and specified id
 Person createNewPersonWithId(Id id) {
-    Person person = createPersonObject();
-    person.id = id;
+    Person person = initPerson();
+
+    if (id < FIRST_VALID_ID)
+        person.id = UNDEFINED;
+    else
+        person.id = id;
+
     return person;
 }
 
 // assign person id
-Person assignIdToPerson(Person person, Id id) {
-    Person copy = copyPersonObject(person);
-    copy.id = id;
-    return copy;
+bool assignIdToPerson(Id id, Person *person) {
+
+    if (id < FIRST_VALID_ID)
+        return false;
+
+    person->id = id;
+    return true;
 }
 
 // assign gender type
-Person assignGenderToPerson(Person person, enum GenderType gender) {
-    Person copy = copyPersonObject(person);
-    copy.gender = gender;
-    return copy;
+bool assignGenderToPerson(enum GenderType gender, Person *person) {
+
+    if (!isValidGenderType(gender))
+        return false;
+
+    person->gender = gender;
+    return true;
 }
 
 // assign day of birth
-Person assignBirthDayToPerson(Person person, Day birth) {
-    Person copy = copyPersonObject(person);
-    copy.birth = birth;
-    return copy;
+bool assignBirthDayToPerson(Day birth, Person *person) {
+
+    if (birth < FIRST_VALID_DAY)
+        return false;
+
+    person->birth = birth;
+    return true;
 }
 
 // assign day of death
-Person assignDeathDayToPerson(Person person, Day death) {
-    Person copy = copyPersonObject(person);
-    copy.death = death;
-    return copy;
+bool assignDeathDayToPerson(Day death, Person *person) {
+
+    if (death < FIRST_VALID_DAY)
+        return false;
+
+    person->death = death;
+    return true;
 }

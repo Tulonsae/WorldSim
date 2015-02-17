@@ -9,6 +9,8 @@
 /* constants */
 #define UNKNOWN 0
 #define UNDEFINED -1
+#define FIRST_VALID_ID 1
+#define FIRST_VALID_DAY 1
 
 /* id */
 typedef int Id;
