@@ -22,6 +22,34 @@ int main(int argc, char *argv[]) {
     char *name = "";
     char *desc = "";
     int count = 0;
+    bool result = false;
+
+    name = "isValidGenderType()";
+    printf("Executing %s\n", name);
+    // TEST: does this routine return false for an invalid GenderType?
+    numTests++;
+    desc = "return false for invalid gender type";
+    if (isValidGenderType(GENDER_SIZE)) {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    } else {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    }
+    // TEST: does this routine return true for all valid GenderType?
+    numTests++;
+    desc = "return true for all valid gender types";
+    if (isValidGenderType(GENDER_UNDEFINED)
+            && isValidGenderType(GENDER_UNKNOWN)
+            && isValidGenderType(GENDER_FEMALE)
+            && isValidGenderType(GENDER_MALE)
+            ) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
 
     name = "genGenderRandomly()";
     printf("Executing %s\n", name);

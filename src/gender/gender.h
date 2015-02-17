@@ -6,6 +6,7 @@
  * Header file for gender data and routines.
  */
 
+#include <stdbool.h>
 #include <sim.h>
 
 // gender type
@@ -16,6 +17,9 @@ enum GenderType {
     GENDER_MALE,			// male
     GENDER_SIZE,			// number of gender types
 };
+
+// is valid gender type
+bool isValidGenderType (enum GenderType gender);
 
 // get db codes and display names
 char *getGenderCode(enum GenderType gender);

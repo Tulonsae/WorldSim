@@ -3,12 +3,16 @@ Copyright (c) 2015 Kathy Feller.
 
 NAME
     getGenderCode, getGenderName, genGenderRandomly - retrieve gender info
+    isValidGenderType - validate gender type
 
 LIBRARY
     libgender.a
 
 SYNOPSIS
     #include <gender.h>
+
+    bool
+    isValidGenderType(enum GenderType gender);
 
     char *
     getGenderCode(enum GenderType gender);
@@ -31,6 +35,9 @@ DESCRIPTION
     and a special enum value that indicates the number of gender types.  The
     GENDER_SIZE is not recognized as a valid gender type by the functions.
     Its only purpose is to easily determine the number of valid gender types.
+
+    The isValidGenderType() function returns true if the gender type is a
+    valid type and false if not.
 
     The getGenderCode() function returns the code for the gender type.  This
     is a single letter and is intended for use by the persistent data store.
