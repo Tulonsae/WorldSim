@@ -14,7 +14,8 @@ int main(int argc, char *argv[]) {
     printf("Id\n");
     for (int i = 0; i < count; i++) {
         Person person = createNewPerson();
-        person = assignIdToPerson(person, ++lastId);
+        // should check the return code of assignIdToPerson
+        assignIdToPerson(++lastId, &person);
         printf("%i\n", person.id);
     }
 }
