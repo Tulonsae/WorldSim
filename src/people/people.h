@@ -1,5 +1,5 @@
-#ifndef PERSON_H
-#define PERSON_H
+#ifndef PEOPLE_H
+#define PEOPLE_H
 /*
  * Copyright (c) 2015 Kathy Feller.
  *
@@ -35,4 +35,4 @@ bool assignDeathDayToPerson(Day death, Person *person);
 
 //Person genNewPerson(Id id, Time current);
 
-#endif /* PERSON_H */
+#endif /* PEOPLE_H */

@@ -5,7 +5,7 @@ all: libpeople.a
 libpeople.a: person.o
 	$(AR) rc $@ $^
 
-%.o: %.c person.h
+%.o: %.c people.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
@@ -18,14 +18,14 @@ runtest: libpeople.a
 ROOT = ..
 include $(ROOT)/Makefile.inc
 
-install: $(INC)/person.h $(LIB)/libpeople.a
-$(INC)/person.h: $(INC) person.h
-	cp person.h $(INC)
+install: $(INC)/people.h $(LIB)/libpeople.a
+$(INC)/people.h: $(INC) people.h
+	cp people.h $(INC)
 $(LIB)/libpeople.a: $(LIB) libpeople.a
 	cp libpeople.a $(LIB)
 $(INC) $(LIB):
 	$(MAKE) -C $(ROOT) dirs
 
 deinstall:
-	rm -f $(INC)/person.h
+	rm -f $(INC)/people.h
 	rm -f $(LIB)/libpeople.a

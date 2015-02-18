@@ -2,7 +2,7 @@
  * Copyright (c) 2015, Kathy Feller.
  */
 
-#include "person.h"
+#include "people.h"
 
 /* private variables */
 

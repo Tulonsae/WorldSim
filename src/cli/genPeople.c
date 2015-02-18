@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <calendar.h>
-#include <person.h>
+#include <people.h>
 
 int main(int argc, char *argv[]) {
     int count = 10;
