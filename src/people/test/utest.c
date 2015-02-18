@@ -23,6 +23,8 @@ int main(int argc, char *argv[]) {
     char *desc = "";
     int count = 0;
     Person person;
+    Day age;
+    bool okFlag;
 
     name = "createNewPerson()";
     printf("Executing %s\n", name);
@@ -286,6 +288,48 @@ int main(int argc, char *argv[]) {
     if ((assignDeathDayToPerson(100, &person))
             && (person.death == 100)
             ) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+
+    name = "genAgeRandomly()";
+    printf("Executing %s\n", name);
+    // TEST: is age a valid day?
+    numTests++;
+    desc = "valid day returned";
+    count = 1000;
+    okFlag = true;
+    for (int i = 0; i < count; i++) {
+        age = genAgeRandomly();
+        if (age < FIRST_VALID_DAY) {
+            okFlag = false;
+            break;
+        }
+    }
+    if (okFlag) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is age a valid age (less than or equal to MAX_AGE)?
+    numTests++;
+    desc = "valid age returned";
+    count = 1000;
+    Day maxAge = convertAgeInYearsToDays(END, MAX_AGE);
+    okFlag = true;
+    for (int i = 0; i < count; i++) {
+        age = genAgeRandomly();
+        if (age > maxAge) {
+            okFlag = false;
+            break;
+        }
+    }
+    if (okFlag) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {

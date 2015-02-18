@@ -11,6 +11,7 @@
 #define UNDEFINED -1
 #define FIRST_VALID_ID 1
 #define FIRST_VALID_DAY 1
+#define MAX_AGE 120
 
 /* id */
 typedef int Id;

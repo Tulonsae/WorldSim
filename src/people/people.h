@@ -8,6 +8,7 @@
 
 #include <stdbool.h>
 #include <sim.h>
+#include <rng.h>
 #include <calendar.h>
 #include <gender.h>
 #include <fertility.h>
@@ -32,6 +33,9 @@ bool assignIdToPerson(Id id, Person *person);
 bool assignGenderToPerson(enum GenderType gender, Person *person);
 bool assignBirthDayToPerson(Day birth, Person *person);
 bool assignDeathDayToPerson(Day death, Person *person);
+
+// generate age routines
+Day genAgeRandomly(void);
 
 //Person genNewPerson(Id id, Time current);
 

@@ -2,7 +2,7 @@
 
 all: libpeople.a
 
-libpeople.a: person.o
+libpeople.a: person.o age.o
 	$(AR) rc $@ $^
 
 %.o: %.c people.h
