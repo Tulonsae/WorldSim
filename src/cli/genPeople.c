@@ -11,11 +11,10 @@ int main(int argc, char *argv[]) {
     Time curDay = 100.0;
     Id lastId = 0;
 
-    printf("Id\n");
+    printf("Id\tGender\n");
     for (int i = 0; i < count; i++) {
-        Person person = createNewPerson();
-        // should check the return code of assignIdToPerson
-        assignIdToPerson(++lastId, &person);
-        printf("%i\n", person.id);
+        Person person = createNewPersonWithId(++lastId);
+        assignGenderToPerson(genGenderRandomly(), &person);
+        printf("%i\t%s\n", person.id, getGenderCode(person.gender));
     }
 }
