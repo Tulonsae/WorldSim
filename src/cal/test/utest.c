@@ -8,10 +8,6 @@
 #include <stdbool.h>
 #include "../calendar.h"
 
-// private functions
-bool isTimeWholeNumber(Time time);
-Time getTimeAsWholeNumber(Time time);
-
 int main(int argc, char *argv[]) {
     int numTests = 0;
     int numFail = 0;
@@ -20,153 +16,15 @@ int main(int argc, char *argv[]) {
     char *PASS = "PASSED";
     char *name = "";
     char *desc = "";
-    Time tropicalYear = 365.2422;
+    Time tropicalYear = getTropicalYear();
     Time time = 0.0;
     CalendarDate date = getDate(time);
     CalendarYear cYear = getCalendarYear(time);
-    Day day = 0;
-    int age = 0;
     Time invalidTime = -1.5;
     Year invalidYearZero = 0;
     Year invalidYearNegative = -1;
-    enum Sequence invalidSequence = RANDOM + 1;
 
-    name = "getTropicalYear()";
-    printf("Executing %s\n", name);
-    Time tropical = getTropicalYear();
-    // TEST: is tropical year the expected constant?
-    numTests++;
-    desc = "value of tropical year";
-    if (tropical == tropicalYear) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-
-    name = "getStartOfDay()";
-    printf("Executing %s\n", name);
-    Time duringDay = 375.6;
-    Time duringDayResult = getStartOfDay(duringDay);
-    // TEST: does start of day return a whole number for a time during day?
-    numTests++;
-    desc = "returned as whole number";
-    if (isTimeWholeNumber(duringDayResult)) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does start of day return the same day?
-    numTests++;
-    desc = "returned as same day";
-    if ((int)duringDay == (int)duringDayResult) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does this routine return UNDEFINED for an invalid time?
-    numTests++;
-    desc = "returned UNDEFINED for invalid time";
-    if (getStartOfDay(invalidTime) == UNDEFINED) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-
-    name = "getSpringOfYear()";
-    printf("Executing %s\n", name);
-    // TEST: does a time within the first year return the first spring of 0?
-    numTests++;
-    desc = "first year spring";
-    if (getSpringOfYear(tropicalYear - 50) == 0) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does a time between the start of the day and a spring return
-    //       the spring on that day rather than the previous spring?
-    numTests++;
-    desc = "time before and on same day as spring";
-    if (getSpringOfYear(tropicalYear - .2) == tropicalYear) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does a time after a leap year return the correct spring?
-    numTests++;
-    desc = "time after a leap year";
-    if (getSpringOfYear(6 * tropicalYear + 10) == (6 * tropicalYear)) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does this routine return UNDEFINED for an invalid time?
-    numTests++;
-    desc = "returned UNDEFINED for invalid time";
-    if (getSpringOfYear(invalidTime) == UNDEFINED) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-
-    name = "getStartOfYear()";
-    printf("Executing %s\n", name);
-    // TEST: does a time within the first year return 0?
-    numTests++;
-    desc = "start of first year";
-    if (getStartOfYear(tropicalYear - 50) == 0) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does a time between the start of the day and a spring return
-    //       the start of year on that day rather than the previous spring?
-    numTests++;
-    desc = "time before and on same day as spring";
-    if (getStartOfYear(tropicalYear - .2) == getTimeAsWholeNumber(tropicalYear)) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does a time after a leap year return the correct spring?
-    numTests++;
-    desc = "time after a leap year";
-    if (getStartOfYear(6 * tropicalYear + 10) == getTimeAsWholeNumber(6 * tropicalYear)) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-    // TEST: does this routine return UNDEFINED for an invalid time?
-    numTests++;
-    desc = "returned UNDEFINED for invalid time";
-    if (getStartOfYear(invalidTime) == UNDEFINED) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
+    char *libName = "libcal.a";
 
     name = "getYear()";
     printf("Executing %s\n", name);
@@ -646,72 +504,6 @@ int main(int argc, char *argv[]) {
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
     }
 
-    name = "convertAgeInYearsToDays()";
-    printf("Executing %s\n", name);
-    // for age 13
-    age = 13;
-    // TEST: is beginning of year at age 13 calculated correctly?
-    numTests++;
-    desc = "beginning of year for age";
-    day = convertAgeInYearsToDays(BEGIN, age);
-    if (day == 4749) {
-        numPass++;
-        printf("  %s: %s: %s %i okay\n", name, PASS, desc, age);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
-        printf("    age = %i, day = %i\n", age, day);
-    }
-    // TEST: is end of year at age 13 calculated correctly?
-    numTests++;
-    desc = "end of year for age";
-    day = convertAgeInYearsToDays(END, age);
-    if (day == 5113) {
-        numPass++;
-        printf("  %s: %s: %s %i okay\n", name, PASS, desc, age);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
-        printf("    age = %i, day = %i\n", age, day);
-    }
-    // TEST: is middle of year at age 13 calculated correctly?
-    numTests++;
-    desc = "middle of year for age";
-    day = convertAgeInYearsToDays(MIDDLE, age);
-    if (day == 4931) {
-        numPass++;
-        printf("  %s: %s: %s %i okay\n", name, PASS, desc, age);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
-        printf("    age = %i, day = %i\n", age, day);
-    }
-    // TEST: is random day of year at age 13 within first and last days?
-    numTests++;
-    desc = "random day of year for age";
-    day = convertAgeInYearsToDays(RANDOM, age);
-    if ((day >= convertAgeInYearsToDays(BEGIN, age)) 
-            && (day <= convertAgeInYearsToDays(END, age))
-            ) {
-        numPass++;
-        printf("  %s: %s: %s %i (day=%i) okay\n", name, PASS, desc, age, day);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s %i wrong\n", name, FAIL, desc, age);
-        printf("    age = %i, day = %i\n", age, day);
-    }
-    // TEST: does this routine return UNDEFINED for an invalid sequence?
-    numTests++;
-    desc = "returned UNDEFINED for invalid sequence";
-    day = convertAgeInYearsToDays(invalidSequence, age);
-    if (day == UNDEFINED) {
-        numPass++;
-        printf("  %s: %s: %s okay\n", name, PASS, desc);
-    } else {
-        numFail++;
-        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
-    }
-
     /* test result totals */
     printf("Results:\n");
     printf("  total tests: %i\n", numTests);
@@ -720,25 +512,7 @@ int main(int argc, char *argv[]) {
     if ((numFail + numPass) != numTests)
         printf("  !! Internal issue - test count is wrong\n");
     if (numFail > 0)
-        printf("  UNIT TESTS FAILED\n");
+        printf("  UNIT TESTS FAILED (%s)\n", libName);
     else
-        printf("  UNIT TESTS PASSED\n");
-}
-
-/* private functions */
-
-// check if the time is a whole number
-bool isTimeWholeNumber(Time time) {
-
-    if (time == getTimeAsWholeNumber(time))
-        return true;
-
-    return false;
-}
-
-Time getTimeAsWholeNumber(Time time) {
-    int truncated = (int)time;
-    Time wholeTime = (Time)truncated;
-
-    return wholeTime;
+        printf("  UNIT TESTS PASSED (%s)\n", libName);
 }

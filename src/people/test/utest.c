@@ -26,6 +26,8 @@ int main(int argc, char *argv[]) {
     Day age;
     bool okFlag;
 
+    char *libName = "libpeople.a";
+
     name = "createNewPerson()";
     printf("Executing %s\n", name);
     // TEST: is person data for initial person correct?
@@ -345,9 +347,9 @@ int main(int argc, char *argv[]) {
     if ((numFail + numPass) != numTests)
         printf("  !! Internal issue - test count is wrong\n");
     if (numFail > 0)
-        printf("  UNIT TESTS FAILED\n");
+        printf("  UNIT TESTS FAILED (%s)\n", libName);
     else
-        printf("  UNIT TESTS PASSED\n");
+        printf("  UNIT TESTS PASSED (%s)\n", libName);
 }
 
 /* private functions */

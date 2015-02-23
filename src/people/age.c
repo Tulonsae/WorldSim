@@ -21,3 +21,5 @@ Day genAgeRandomly(void) {
 
     return (Day)uRand(0, maxAge);
 }
+
+// determine day of birth from time and age

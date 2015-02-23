@@ -6,6 +6,7 @@
  * Header file for fertility data.  Currently, for humans only.
  */
 
+#include <wstime.h>
 #include <calendar.h>
 
 // fertility type
@@ -19,18 +20,18 @@ enum FertilityType {
 
 // fertility range
 typedef struct {
-    Day startMin;		// minimum starting age, in days
-    Day startMax;		// maximum starting age, in days
-    Day startMedium;		// medium starting age, in days
-    Day endMin;			// minimum ending age, in days
-    Day endMax;			// maximum ending age, in days
-    Day endMedium;		// medium ending age, in days
+    TimeDay startMin;		// minimum starting age, in days
+    TimeDay startMax;		// maximum starting age, in days
+    TimeDay startMedium;	// medium starting age, in days
+    TimeDay endMin;		// minimum ending age, in days
+    TimeDay endMax;		// maximum ending age, in days
+    TimeDay endMedium;		// medium ending age, in days
 } FertileRangeFactors;
 
 // pregnancy factors
 // - add miscarriage and such here?
 typedef struct {
-    int gestation;		// from conception to birth, in days
+    TimeDay gestation;		// from conception to birth, in days
 } PregnancyFactors;
 
 // fertility params - used as general parameters when generating/processing

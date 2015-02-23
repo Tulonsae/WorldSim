@@ -10,19 +10,19 @@
 // fertility factors - initial data in years for convenience
 // - modify this when data is loaded from db
 typedef struct {
-    Year startMinYears;		// minimum starting age, in years
-    Year startMaxYears;		// maximum starting age, in years
-    Year startMediumYears;	// medium starting age, in years
-    Year endMinYears;		// minimum ending age, in years
-    Year endMaxYears;		// maximum ending age, in years
-    Year endMediumYears;	// medium ending age, in years
+    TimeYear startMinYears;	// minimum starting age, in years
+    TimeYear startMaxYears;	// maximum starting age, in years
+    TimeYear startMediumYears;	// medium starting age, in years
+    TimeYear endMinYears;	// minimum ending age, in years
+    TimeYear endMaxYears;	// maximum ending age, in years
+    TimeYear endMediumYears;	// medium ending age, in years
     bool loaded;		// flag for if days data calculated/loaded
-    Day startMin;		// minimum starting age, in days (calculated)
-    Day startMax;		// maximum starting age, in days (calculated)
-    Day startMedium;		// medium starting age, in days (calculated)
-    Day endMin;			// minimum ending age, in days (calculated)
-    Day endMax;			// maximum ending age, in days (calculated)
-    Day endMedium;		// medium ending age, in days (calculated)
+    TimeDay startMin;		// minimum starting age, in days (calculated)
+    TimeDay startMax;		// maximum starting age, in days (calculated)
+    TimeDay startMedium;	// medium starting age, in days (calculated)
+    TimeDay endMin;		// minimum ending age, in days (calculated)
+    TimeDay endMax;		// maximum ending age, in days (calculated)
+    TimeDay endMedium;		// medium ending age, in days (calculated)
 } RangeFactors;
 
 // fertility names and codes

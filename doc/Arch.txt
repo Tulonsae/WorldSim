@@ -17,6 +17,61 @@ Design Questions
     in the master database.
 
 
+Organization
+------------
+
+    WorldSim is organized into a set of libraries and various programs that
+    use the libraries.  The libraries are modular and contain foundational
+    functionality that can be combined in numerous ways to produce programs
+    that simulate various types of "worlds".
+
+    In world simulation, nearly anything could affect anything else (e.g.,
+    the "butterfly effect"), and many functions have overlapping purposes
+    and categorizations.  In WorldSim, modules are basic building blocks
+    and each module is intended to be as clearly defined as possible.
+
+    An overarching design goal for WorldSim is that the module defintions
+    and rules implementations will allow for "emergent" behavior.  (This
+    will be better explained in a future revision.)
+
+    What follows is the current guiding reasons for how the functions are
+    divided up into modular components.
+
+    Gender deals with sexuality and affects mating and reproduction in
+    all creatures as well as self identity in intelligent beings.  Since
+    reproduction implies fertility, the fertility functions could be
+    grouped with gender, but for now they are not.  More than likely,
+    gender will be split into two types: identification genders and
+    biological genders.  And at that point, fertility and biological
+    gender may be combined.  Fertility could also be divided up and
+    combined with the fertile object (i.e., people, animals, etc.)
+    instead of being separate.  In that case, gender might handled the
+    same way.
+
+    Calendar and time are actually two different concepts.  Time is a
+    measurement while a calendar event is a marker.  This may seem like
+    a trivial difference, but consider:
+
+      - A person who is 15 years old is living within their 16th year
+        of life.
+      - A day in a month starts at 1, but on the beginning day of a
+        month, 0 days have passed, not 1.
+
+    In addition, time is generic (although it may be measured in different
+    units), but calendars may display and note events quite differently.
+    For this reason, time has been placed in its own module along with
+    age functionality.  Time/age are considered biological and geological
+    types of function.  The calendar is a separate module and is considered
+    a cultural type of function.
+
+    People are a central part of WorldSim.  The reasoning and design for
+    their functionality is still in flux.
+
+    Resources and economy are still at TBD stage.
+
+    See the _Execution_ Section for information on the WorldSim programs.
+
+
 Execution
 ---------
 
@@ -51,8 +106,8 @@ Data Persistence
 
     Currently, there are only 2 types of databases.
 
-    1. master database - a single database, with a predefined name
-    2. regional database - each region has their own database
+      1. master database - a single database, with a predefined name
+      2. regional database - each region has their own database
 
     For the current schema documentation (still being drafted), see
     Schema.txt.
@@ -65,14 +120,17 @@ Data Persistence
 Calendar
 --------
 
+    Note: this calendar description is currently intertwined with the time
+    concept.  This section needs revision.
+
     Currently, only 1 calendar is supported.  This calendar is based on
     earth's (current) tropical calendar, but simplified.  This tropical
     year, unlike earth's, does not vary.
 
-        1 minute = 60 seconds
-        1 hour = 60 minutes
-        1 day = 24 hours
-        1 tropical year = 365.2422 days
+      1 minute = 60 seconds
+      1 hour = 60 minutes
+      1 day = 24 hours
+      1 tropical year = 365.2422 days
 
     The calendar year starts on the same day as the northern vernal equinox
     and lasts through the day preceeding the next northern vernal equinox.
@@ -98,12 +156,27 @@ Libraries
 
 rng
     This random number generator library contains various convenience
-    routines to generate pseudo-random numbers.
+    routines to generate pseudo-random numbers.  See the Readme.txt (in
+    the src/rng directory) for more documentation.
+
+wstime
+    This library contains routines that handle WorldSim time and its
+    measurement (e.g., ages).  See the _Organization_ Section in this
+    document for more information.
 
 calendar
-    This library contains the routines that handle the calendar and all
-    calendar math.  See the Calendar Section in this document for more
-    information on the calendar itself.
+    This library contains routines that handle the calendar and all
+    calendar math.  See the _Calendar_ Section in this document for
+    more information on the calendar itself.
+
+gender
+    This library contains routines that handle gender types.  See the
+    Readme.txt (in the src/gender directory) for more documentation.
+
+fertility
+    This library contains routines that handle fertility, current only
+    for humans.
 
 people
-    In progress.
+    This library contains routines that handle people.  See the _People_
+    Section in this document for more information.

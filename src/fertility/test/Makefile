@@ -6,7 +6,7 @@ clean:
 	rm -f *.o utest
 
 utest: ../fertility.h ../libfert.a utest.c
-	$(CC) $(CFLAGS) -o utest utest.c ../libfert.a $(LIB)/libcal.a $(LIB)/librng.a
+	$(CC) $(CFLAGS) -o utest utest.c ../libfert.a $(LIB)/libcal.a $(LIB)/libwstime.a $(LIB)/librng.a
 
 runtest: utest
 	./utest

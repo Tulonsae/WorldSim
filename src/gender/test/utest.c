@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) {
     int count = 0;
     bool result = false;
 
+    char *libName = "libgender.a";
+
     name = "isValidGenderType()";
     printf("Executing %s\n", name);
     // TEST: does this routine return false for an invalid GenderType?
@@ -205,9 +207,9 @@ int main(int argc, char *argv[]) {
     if ((numFail + numPass) != numTests)
         printf("  !! Internal issue - test count is wrong\n");
     if (numFail > 0)
-        printf("  UNIT TESTS FAILED\n");
+        printf("  UNIT TESTS FAILED (%s)\n", libName);
     else
-        printf("  UNIT TESTS PASSED\n");
+        printf("  UNIT TESTS PASSED (%s)\n", libName);
 }
 
 /* private functions */

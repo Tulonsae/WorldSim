@@ -6,16 +6,14 @@
  * Header file for calendar library.
  */
 
+#include <math.h>
 #include <sim.h>
 #include <rng.h>
+#include <wstime.h>
 
 // constants
 #define FIRST_VALID_YEAR 1
 #define FIRST_VALID_DAY 1
-
-// time - measures passage of time, in days
-// epoch is 0.0, each day starts at .0, ends just before the next .0
-typedef double Time;
 
 // calendar units - start at 1
 typedef int Day;
@@ -32,12 +30,12 @@ typedef struct {
     Month moy;			// month of the year
     Day dom;			// day of the month
     Day doy;			// day of the year
-    int numY;			// number of whole years
+    TimeYear numY;		// number of whole years
     int numM;			// number of whole months
-    int numD;			// number of whole days
+    TimeDay numD;		// number of whole days
     int numMpy;			// number of whole months in partial year
-    int numDpy;			// number of whole days in partial year
-    int numDpm;			// number of whole days in partial month
+    TimeDay numDpy;		// number of whole days in partial year
+    TimeDay numDpm;		// number of whole days in partial month
 } CalendarDate;
 
 // calendar year - contains information about a specific calendar year
@@ -47,25 +45,16 @@ typedef struct {
     Time spring;		// vernal equinox
     Day first;			// first day
     Day last;			// last day
-    int length;			// number of days in this year
+    TimeDay length;		// number of days in this year
 } CalendarYear;
 
-// get length of tropical year
-Time getTropicalYear();
-
 // get calendar info for specified time
-// note: if time < 0, then UNDEFINED is returned
-Time getStartOfDay(Time time);
-Time getStartOfYear(Time time);
-Time getSpringOfYear(Time time);		// vernal equinox for year
+// note: if time < EPOCH, then UNDEFINED is returned
 CalendarDate getDate(Time time);
 Day getDay(Time time);				// equals CalendarDate.d
 Year getYear(Time time);			// equals CalendarDate.y
 Day getDayOfYear(Time time);			// equals CalendarDate.doy
 CalendarYear getCalendarYear(Time time);
 CalendarYear getCalendarYearForYear (Year year);
-
-// convert age in years to days for beginning, middle, end, or random day of year
-Day convertAgeInYearsToDays(enum Sequence when, Year years);
 
 #endif /* CALENDAR_H */
