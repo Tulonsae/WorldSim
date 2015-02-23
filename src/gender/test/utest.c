@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     int female = 0;
     int male = 0;
     int error = 0;
-    count = 1000;
+    count = 10000;
     for (int i = 0; i < count; i++) {
         enum GenderType gender = genGenderRandomly();
         if (gender == GENDER_FEMALE)
