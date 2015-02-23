@@ -27,7 +27,7 @@ install: sim $(INSTMODS)
 $(INSTMODS):
 	$(MAKE) -C $(@:install-%=%) install
 
-deinstall: $(DEINSTMODS)
+deinstall: sim-deinstall $(DEINSTMODS)
 $(DEINSTMODS):
 	$(MAKE) -C $(@:deinstall-%=%) deinstall
 
@@ -41,4 +41,5 @@ sim: $(INC)/sim.h
 $(INC)/sim.h: $(INC) sim.h
 	cp sim.h $(INC)
 
-# need to add a "deinstall" for sim.h
+sim-deinstall:
+	rm -f $(INC)/sim.h
