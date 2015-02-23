@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2015, Kathy Feller.
  *
- * Unit tests for cal library.
+ * Unit tests for wstime library.
  */
 
 #include <stdio.h>
@@ -26,6 +26,8 @@ int main(int argc, char *argv[]) {
     TimeYear invalidYear = -1;
     TimeYear ageInYears;
     TimeDay ageInDays;
+
+    char *libName = "libwstime.a";
 
     name = "getTropicalYear()";
     printf("Executing %s\n", name);
@@ -83,7 +85,7 @@ int main(int argc, char *argv[]) {
     // TEST: is correct number of years returned for a time within first year?
     numTests++;
     desc = "return number of years for 1st year";
-    time = 360.3;
+    time = 650.25;
     years = getNumYears(time);
     if (years == 1) {
         numPass++;
@@ -323,7 +325,7 @@ int main(int argc, char *argv[]) {
     if ((numFail + numPass) != numTests)
         printf("  !! Internal issue - test count is wrong\n");
     if (numFail > 0)
-        printf("  UNIT TESTS FAILED\n");
+        printf("  UNIT TESTS FAILED (%s)\n", libName);
     else
-        printf("  UNIT TESTS PASSED\n");
+        printf("  UNIT TESTS PASSED (%s)\n", libName);
 }
