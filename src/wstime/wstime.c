@@ -64,6 +64,14 @@ TimeDay getNumDays(Time time) {
     return (TimeDay)getStartOfDay(time);
 }
 
+// get number of years since epoch for specified time
+TimeYear getNumYears(Time time) {
+    if (time < EPOCH)
+        return UNDEFINED;
+
+    return (TimeYear)floor(getSpringOfYear(time) / getTropicalYear());
+}
+
 // get starting time for the day that contains this time
 Time getStartOfDay(Time time) {
     if (time < EPOCH)

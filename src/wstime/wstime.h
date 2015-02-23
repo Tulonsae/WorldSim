@@ -30,6 +30,8 @@ Time getTropicalYear();
 
 // get number of days since epoch for specified time
 TimeDay getNumDays(Time time);
+// get number of years since epoch for specified time
+TimeYear getNumYears(Time time);
 
 // significant events in time
 // note: if time < EPOCH, then UNDEFINED is returned

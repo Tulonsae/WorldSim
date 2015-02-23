@@ -17,6 +17,9 @@ int main(int argc, char *argv[]) {
     char *name = "";
     char *desc = "";
     Time tropicalYear = 365.2422;
+    Time time;
+    TimeDay days;
+    TimeYear years;
     Time invalidTime = -1.5;
     Time duringDay;
     Time duringDayResult;
@@ -36,6 +39,7 @@ int main(int argc, char *argv[]) {
     } else {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+        printf("    expected tropical year = %.5f, tropical year = %.5f\n", tropicalYear, tropical);
     }
 
     name = "getNumDays()";
@@ -53,12 +57,54 @@ int main(int argc, char *argv[]) {
     // TEST: is correct number of days returned for a time?
     numTests++;
     desc = "return number of days";
-    if (getNumDays(365.3) == 365) {
+    time = 365.3;
+    days = getNumDays(time);
+    if (days == 365) {
         numPass++;
         printf("  %s: %s: %s okay\n", name, PASS, desc);
     } else {
         numFail++;
         printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+        printf("    time = %.5f, days = %i\n", time, days);
+    }
+
+    name = "getNumYears()";
+    printf("Executing %s\n", name);
+    // TEST: does this routine return UNDEFINED for an invalid time?
+    numTests++;
+    desc = "returned UNDEFINED for invalid time";
+    if (getNumYears(invalidTime) == UNDEFINED) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+    }
+    // TEST: is correct number of years returned for a time within first year?
+    numTests++;
+    desc = "return number of years for 1st year";
+    time = 360.3;
+    years = getNumYears(time);
+    if (years == 1) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+        printf("    time = %.5f, years = %i\n", time, years);
+    }
+    // TEST: is correct number of years returned for a time within second year?
+    numTests++;
+    desc = "return number of years for 2nd year";
+    time = 650.25;
+    years = getNumYears(time);
+    if (years == 1) {
+        numPass++;
+        printf("  %s: %s: %s okay\n", name, PASS, desc);
+    } else {
+        numFail++;
+        printf("  %s: %s: %s wrong\n", name, FAIL, desc);
+        printf("    time = %.5f, years = %i\n", time, years);
     }
 
     name = "getStartOfDay()";
