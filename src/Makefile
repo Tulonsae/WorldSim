@@ -1,4 +1,6 @@
 # Makefile
+# Note: This will not work for parallel make.  The targets must be run
+# in the expected order described in this Makefile.
 
 ROOT = .
 include Makefile.inc
