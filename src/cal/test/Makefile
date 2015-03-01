@@ -6,7 +6,7 @@ clean:
 	rm -f *.o utest
 
 utest: ../calendar.h ../libcal.a utest.c
-	$(CC) -o utest $(CFLAGS) -lm utest.c ../libcal.a $(LIB)/libwstime.a $(LIB)/librng.a
+	$(CC) -o utest $(CFLAGS) utest.c ../libcal.a $(LIB)/libwstime.a $(LIB)/librng.a -lm
 
 runtest: utest
 	./utest
